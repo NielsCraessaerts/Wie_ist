@@ -3,7 +3,7 @@ public enum Kleur {
     Zwart,
     Grijs,
     Ros,
-    Groen,
+    Rood,
     Bruin,
     Blauw;
 

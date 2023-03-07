@@ -2,7 +2,8 @@ public enum Extra {
     Bril,
     Hoed,
     Ketting,
-    Oorbel;
+    Oorbel,
+    Niets;
 
     public boolean isGelijkAan(String question) {
         return question.contains(name().toLowerCase());
