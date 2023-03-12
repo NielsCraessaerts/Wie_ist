@@ -19,6 +19,9 @@ import javafx.scene.paint.Paint;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import static javafx.scene.input.KeyCode.V;
 
@@ -29,7 +32,7 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage mijnStage) {
+    public void start(Stage mijnStage) throws FileNotFoundException {
         //1 of meerdere Nodes aanmaken aanmaken
         VBox root = new VBox();
         HBox hBox = new HBox();
@@ -71,6 +74,17 @@ public class Main extends Application{
         Image character22 = new Image("/characters/character22.png");
         Image character23 = new Image("/characters/character23.png");
         Image character24 = new Image("/characters/character24.png");
+
+//        File ImageAanmaak = new File("/txt files/Image aanmaak.txt");
+//        Scanner scanner = new Scanner(ImageAanmaak);
+
+//        for(int i=0; i<24; i++) {
+//            String imageFile = scanner.nextLine();
+//            Image image = new Image(imageFile);
+//            //use the Image instance as needed
+//        }
+
+
         //</editor-fold>
 
         //<editor-fold desc="Aanmaak Elim foto's">
@@ -125,6 +139,17 @@ public class Main extends Application{
         ImageView Bordpersoon22 = new ImageView(character22);
         ImageView Bordpersoon23 = new ImageView(character23);
         ImageView Bordpersoon24 = new ImageView(character24);
+
+//        File ImageViewAanmaak = new File("/txt files/ ImageView aanmaak.txt");
+//        Scanner scanner2 = new Scanner(ImageViewAanmaak);
+//
+//        for(int i=0; i<24; i++) {
+//            String imageFile = scanner.nextLine();
+//            Image image = new Image(imageFile);
+//            ImageView imageView = new ImageView(image);
+//            //set any other properties you need for the ImageView
+//            //use the ImageView instance as needed
+//        }
         //</editor-fold>
 
         //<editor-fold desc="Aanmaak Imageview elim">

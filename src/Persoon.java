@@ -1,3 +1,5 @@
+import javafx.scene.image.Image;
+
 public class Persoon  {
     public Geslacht geslacht;
     public Kleur kleur;
@@ -5,15 +7,21 @@ public class Persoon  {
     public Gezichtsbeharing gezichtsbeharing;
     public Extra extra;
     public String Naam;
+    private int karakterid;
 
 
-    public Persoon(String Naam,Geslacht geslacht, Kleur kleur, Haar haar, Gezichtsbeharing gezichtsbeharing, Extra extra ) {
+    public Persoon(String Naam,Geslacht geslacht, Kleur kleur, Haar haar, Gezichtsbeharing gezichtsbeharing, Extra extra, int karakterid) {
         this.geslacht = geslacht;
         this.kleur = kleur;
         this.haar = haar;
         this.gezichtsbeharing = gezichtsbeharing;
         this.extra = extra;
         this.Naam = Naam;
+        this.karakterid = karakterid;
+    }
+
+    public Image getImage() {
+     return new Image("/characters/character"+this.karakterid+".png");
     }
 
     public Geslacht getGeslacht() {

@@ -12,5 +12,7 @@ public class Game {
 //        }
 //    }
 
+    //spelbord eventueel initialiserern in constructor vnan game klasse, niet in speler. SPELER zelf ook instantieren in constructor
+
 
 }
