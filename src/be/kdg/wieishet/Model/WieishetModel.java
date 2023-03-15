@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class WieishetModel {
@@ -66,6 +70,41 @@ public class WieishetModel {
     public void setHuidigeSpeler(Speler huidigeSpeler) {
         this.huidigeSpeler = huidigeSpeler;
     }
+
+
+
+
+    public void schrijfHighscoreWeg(Highscores wegTeSchrijvenHigscoreGegevens) {
+        File mijnHighscoreBestand = new File(".idea/Inventory/Highscores.csv");
+        ArrayList<String> wegTeSchrijvenRegelsTekst = new ArrayList<String>();
+        wegTeSchrijvenRegelsTekst.add(wegTeSchrijvenHigscoreGegevens.getSpelernaam() + ";" + wegTeSchrijvenHigscoreGegevens.getAantalbeurten());
+        try {
+            Files.write(mijnHighscoreBestand.toPath(), wegTeSchrijvenRegelsTekst, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public List<Highscores> leesHighscoresVanBestand(){
+        //CSV bestand uitlezen
+        List<Highscores> spelersinformatie = new ArrayList<Highscores>();
+        File mijnHighscoreBestand = new File(".idea\\jqsdfhu\\Highscores.csv");
+        try {
+            List<String> mijnHighscoreLijnenAlsTekst = Files.readAllLines(mijnHighscoreBestand.toPath());
+            for (String huidigeHighscoreLijn : mijnHighscoreLijnenAlsTekst) {
+                String[] mijnHighscoreOnderdelen = huidigeHighscoreLijn.split(";");
+
+                String spelernaam = mijnHighscoreOnderdelen[0];
+                int score = Integer.parseInt(mijnHighscoreOnderdelen[1]);
+
+                Highscores mijnUitgelezenHighscore = new Highscores(spelernaam, score);
+                spelersinformatie.add(mijnUitgelezenHighscore);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return spelersinformatie;
+    }
+
 
 
 }
