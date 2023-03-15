@@ -74,23 +74,23 @@ public class WieishetModel {
 
 
 
-    public void schrijfHighscoreWeg(Highscores wegTeSchrijvenHigscoreGegevens) {
-        File mijnHighscoreBestand = new File(".idea/Inventory/Highscores.csv");
-        ArrayList<String> wegTeSchrijvenRegelsTekst = new ArrayList<String>();
-        wegTeSchrijvenRegelsTekst.add(wegTeSchrijvenHigscoreGegevens.getSpelernaam() + ";" + wegTeSchrijvenHigscoreGegevens.getAantalbeurten());
+    public void addHighscore(Highscores toAddHighscores) {
+        File Highscores = new File(".idea/Inventory/Highscores.csv");
+        ArrayList<String> toAddHighscore = new ArrayList<String>();
+        toAddHighscore.add(toAddHighscores.getSpelernaam() + ";" + toAddHighscores.getAantalbeurten());
         try {
-            Files.write(mijnHighscoreBestand.toPath(), wegTeSchrijvenRegelsTekst, StandardOpenOption.APPEND);
+            Files.write(Highscores.toPath(), toAddHighscore, StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public List<Highscores> leesHighscoresVanBestand(){
+    public List<Highscores> readHighscore(){
         //CSV bestand uitlezen
         List<Highscores> spelersinformatie = new ArrayList<Highscores>();
-        File mijnHighscoreBestand = new File(".idea\\jqsdfhu\\Highscores.csv");
+        File Highscores = new File(".idea\\jqsdfhu\\Highscores.csv");
         try {
-            List<String> mijnHighscoreLijnenAlsTekst = Files.readAllLines(mijnHighscoreBestand.toPath());
-            for (String huidigeHighscoreLijn : mijnHighscoreLijnenAlsTekst) {
+            List<String> CurrentHighscores = Files.readAllLines(Highscores.toPath());
+            for (String huidigeHighscoreLijn : CurrentHighscores) {
                 String[] mijnHighscoreOnderdelen = huidigeHighscoreLijn.split(";");
 
                 String spelernaam = mijnHighscoreOnderdelen[0];
