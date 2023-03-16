@@ -1,9 +1,6 @@
 package be.kdg.wieishet.Model;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -79,11 +76,17 @@ public class WieishetModel {
 
 
     public void addHighscore(Highscores toAddHighscores) {
-        File Highscores = new File(".idea\\Invenory\\Highscores.csv");
-        ArrayList<String> toAddHighscore = new ArrayList<String>();
-        toAddHighscore.add(toAddHighscores.getSpelernaam() + ";" + toAddHighscores.getAantalbeurten());
+        File Highscores = new File(".idea\\Inventory\\Highscores.csv");
+        String newHighscore = toAddHighscores.getSpelernaam() + ";" + toAddHighscores.getAantalbeurten();
+
         try {
-            Files.write(Highscores.toPath(), toAddHighscore, StandardOpenOption.APPEND);
+            if (!Highscores.exists()) {
+                Highscores.createNewFile();
+            }
+
+            FileWriter writer = new FileWriter(Highscores, true);
+            writer.write(newHighscore + System.lineSeparator());
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,10 +101,21 @@ public class WieishetModel {
                 String[] mijnHighscoreOnderdelen = huidigeHighscoreLijn.split(";");
 
                 String spelernaam = mijnHighscoreOnderdelen[0];
-                int score = Integer.parseInt(mijnHighscoreOnderdelen[1]);
+                int score = 0;
+                if (mijnHighscoreOnderdelen[1].matches("\\d+")) {
+                    score = Integer.parseInt(mijnHighscoreOnderdelen[1]);
+                }else {
+                    System.out.println("tis kapoet");
+                }
 
                 Highscores mijnUitgelezenHighscore = new Highscores(spelernaam, score);
                 spelersinformatie.add(mijnUitgelezenHighscore);
+
+                String foef = mijnHighscoreOnderdelen[0];
+                String scoreStr = mijnHighscoreOnderdelen[1];
+                System.out.println(foef + scoreStr);
+                System.out.println(Highscores.getAbsolutePath());
+                int foef2 = Integer.parseInt(scoreStr);
             }
         } catch (IOException e) {
             e.printStackTrace();
