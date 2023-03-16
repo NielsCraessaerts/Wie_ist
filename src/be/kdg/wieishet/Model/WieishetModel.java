@@ -111,11 +111,11 @@ public class WieishetModel {
                 Highscores mijnUitgelezenHighscore = new Highscores(spelernaam, score);
                 spelersinformatie.add(mijnUitgelezenHighscore);
 
-                String foef = mijnHighscoreOnderdelen[0];
-                String scoreStr = mijnHighscoreOnderdelen[1];
-                System.out.println(foef + scoreStr);
-                System.out.println(Highscores.getAbsolutePath());
-                int foef2 = Integer.parseInt(scoreStr);
+//                String foef = mijnHighscoreOnderdelen[0];
+//                String scoreStr = mijnHighscoreOnderdelen[1];
+//                System.out.println(foef + scoreStr);
+//                System.out.println(Highscores.getAbsolutePath());
+//                int foef2 = Integer.parseInt(scoreStr);
             }
         } catch (IOException e) {
             e.printStackTrace();

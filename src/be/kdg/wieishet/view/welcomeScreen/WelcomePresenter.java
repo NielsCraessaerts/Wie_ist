@@ -6,6 +6,8 @@ import be.kdg.wieishet.view.SpelOpties.SpelOptiesPresenter;
 import be.kdg.wieishet.view.SpelOpties.SpelOptiesView;
 
 import be.kdg.wieishet.Main;
+import be.kdg.wieishet.view.niewSpelAanmaak.NieuwSpelView;
+import be.kdg.wieishet.view.niewSpelAanmaak.NiewSpelPresenter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -29,6 +31,19 @@ public class WelcomePresenter {
         this.updateView();
     }
     private void addEventHandlers() {
+
+        view.getBtnNiewSpel().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+                NieuwSpelView NieuwSpelView = new NieuwSpelView();
+                NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model,NieuwSpelView);
+                Scene Highscores = new Scene(NieuwSpelView);
+                Main.window.setScene(Highscores);
+                Main.window.setTitle("Highscores");
+                Main.window.show();
+            }
+        });
         view.getBtnHighscore().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

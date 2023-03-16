@@ -44,17 +44,17 @@ public class HighScoresView extends VBox {
     private void initialiseNodes() {
         lblPlaats = new Label("Rank");
 
-        lblNaaminvoer = new Label("Name:");
-        lblAantalbeurtenInvoer = new Label("Number of guesses:");
+        lblNaaminvoer = new Label("Naam:");
+        lblAantalbeurtenInvoer = new Label("Aantal beurten:");
         lblSpelernaam = new Label("Player name:");
         lblAantalBeurten = new Label("Score");
-        btnRead = new Button("Read");
-        btnWrite = new Button("Write");
+        btnRead = new Button("Lees");
+        btnWrite = new Button("Toevoegen");
 
         txtSpelernaam = new TextField();
         txtAantalBeurten = new TextField();
         mijnGridPane = new GridPane();
-        btnBack = new Button("Back");
+        btnBack = new Button("Terug");
         inputpane = new BorderPane();
         buttonbox = new HBox(20);
         inputBox = new VBox(10);
@@ -99,6 +99,7 @@ public class HighScoresView extends VBox {
         mijnGridPane.setHgap(75);
         mijnGridPane.setVgap(10);
 
+        this.setAlignment(Pos.CENTER);
         this.getChildren().add(mijnGridPane);
         this.getChildren().add(inputpane);
 
