@@ -1,14 +1,16 @@
 package be.kdg.wieishet.view.HighScores;
-
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
 public class HighScoresView extends VBox {
 
+    private Label lblPlaats;
     private Label lblNaaminvoer;
     private Label lblAantalbeurtenInvoer;
     private Label lblSpelernaam;
@@ -33,12 +35,15 @@ public class HighScoresView extends VBox {
 
 
     private void initialiseNodes() {
+        lblPlaats = new Label("Positie");
 
         lblNaaminvoer = new Label("Naam");
         lblAantalbeurtenInvoer = new Label("Aantal gespeelde beurten");
         lblSpelernaam = new Label("Spelernaam");
+        lblAantalBeurten = new Label("Score");
         lblAantalBeurten = new Label("Aantal Beurten");
         btnRead = new Button("Lezen");
+        btnWrite = new Button("Schrijven");
         btnWrite = new Button("Toevoegen");
         txtSpelernaam = new TextField();
         txtAantalBeurten = new TextField();
@@ -57,7 +62,7 @@ public class HighScoresView extends VBox {
         txtSpelernaam.setStyle("-fx-text-fill:gray;-fx-font-size:14px;");
         lblAantalbeurtenInvoer.setStyle("-fx-text-fill:white;-fx-font-size:14px;-fx-font-weight:bold;");
         txtAantalBeurten.setStyle("-fx-text-fill:gray;-fx-font-size:14px;");
-        
+
         this.getChildren().add(mijnGridPane);
         this.getChildren().add(btnBack);
         this.setAlignment(Pos.CENTER_RIGHT);
@@ -67,9 +72,12 @@ public class HighScoresView extends VBox {
         this.getChildren().add(lblAantalbeurtenInvoer);
         this.getChildren().add(txtAantalBeurten);
         this.getChildren().add(btnWrite);
-        this.background = new Background(backgroundImg);
+    }
 
-        
+
+    public Label getLblPlaats() {
+        return lblPlaats;
+
     }
 
 
@@ -77,31 +85,24 @@ public class HighScoresView extends VBox {
     public Label getLblSpelernaam() {
         return lblSpelernaam;
     }
-
     public Label getLblAantalBeurten() {
         return lblAantalBeurten;
     }
-
     public Button getBtnRead() {
         return btnRead;
     }
-
     public Button getBtnWrite() {
         return btnWrite;
     }
-
     public Button getBtnBack() {
         return btnBack;
     }
-
     public TextField getTxtSpelernaam() {
         return txtSpelernaam;
     }
-
     public TextField getTxtAantalBeurten() {
         return txtAantalBeurten;
     }
-
     public GridPane getMijnGridPane() {
         return mijnGridPane;
     }

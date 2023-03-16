@@ -15,6 +15,8 @@ public class WieishetModel {
     private Speler speler2;
     private Speler huidigeSpeler;
     private Persoon[] characters;
+    private boolean soundEnabled;
+    private boolean musicEnabled;
 
 
 
@@ -27,6 +29,8 @@ public class WieishetModel {
     }
 
     public WieishetModel() {
+        soundEnabled = true;
+        musicEnabled = true;
         try{
         characters = new Persoon[24];
         BufferedReader ConfigReader = new BufferedReader(new FileReader("/txt files/KarakterAanmaak.txt"));
@@ -103,6 +107,24 @@ public class WieishetModel {
             e.printStackTrace();
         }
         return spelersinformatie;
+    }
+
+
+
+    public boolean isSoundEnabled() {
+        return soundEnabled;
+    }
+
+    public void setSoundEnabled(boolean soundEnabled) {
+        this.soundEnabled = soundEnabled;
+    }
+
+    public boolean isMusicEnabled() {
+        return musicEnabled;
+    }
+
+    public void setMusicEnabled(boolean musicEnabled) {
+        this.musicEnabled = musicEnabled;
     }
 
 
