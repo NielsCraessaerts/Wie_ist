@@ -79,7 +79,7 @@ public class WieishetModel {
 
 
     public void addHighscore(Highscores toAddHighscores) {
-        File Highscores = new File(".idea/Inventory/Highscores.csv");
+        File Highscores = new File(".idea\\Invenory\\Highscores.csv");
         ArrayList<String> toAddHighscore = new ArrayList<String>();
         toAddHighscore.add(toAddHighscores.getSpelernaam() + ";" + toAddHighscores.getAantalbeurten());
         try {
@@ -91,7 +91,7 @@ public class WieishetModel {
     public List<Highscores> readHighscore(){
         //CSV bestand uitlezen
         List<Highscores> spelersinformatie = new ArrayList<Highscores>();
-        File Highscores = new File(".idea\\jqsdfhu\\Highscores.csv");
+        File Highscores = new File(".idea\\Inventory\\Highscores.csv");
         try {
             List<String> CurrentHighscores = Files.readAllLines(Highscores.toPath());
             for (String huidigeHighscoreLijn : CurrentHighscores) {

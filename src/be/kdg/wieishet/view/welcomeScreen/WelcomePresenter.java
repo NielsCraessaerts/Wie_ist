@@ -2,6 +2,8 @@ package be.kdg.wieishet.view.welcomeScreen;
 import be.kdg.wieishet.Model.WieishetModel;
 import be.kdg.wieishet.view.HighScores.*;
 import be.kdg.wieishet.view.HighScores.*;
+import be.kdg.wieishet.view.SpelOpties.SpelOptiesPresenter;
+import be.kdg.wieishet.view.SpelOpties.SpelOptiesView;
 import be.kdg.wieishet.view.welcomeScreen.*;
 import be.kdg.wieishet.Main;
 import javafx.event.ActionEvent;
@@ -28,14 +30,29 @@ public class WelcomePresenter {
 
             }
         });
+        view.getBtnSpelOpties().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                updateView();
+            }
+        });
     }
     private void updateView() {
-        HighScoresView HighScoresView = new HighScoresView();
-        HighScoresPresenter HighScoresPresenter = new HighScoresPresenter(model,HighScoresView);
-        Scene Highscores = new Scene(HighScoresView);
-        Main.window.setScene(Highscores);
-        Main.window.setTitle("Highscores");
+//        HighScoresView HighScoresView = new HighScoresView();
+//        HighScoresPresenter HighScoresPresenter = new HighScoresPresenter(model,HighScoresView);
+//        Scene Highscores = new Scene(HighScoresView);
+//        Main.window.setScene(Highscores);
+//        Main.window.setTitle("Highscores");
+//        Main.window.show();
+
+        SpelOptiesView SpelOptiesView = new SpelOptiesView();
+        SpelOptiesPresenter SpelOptiesPresenter = new SpelOptiesPresenter(model,SpelOptiesView);
+        Scene SpelOpties = new Scene(SpelOptiesView);
+        Main.window.setScene(SpelOpties);
+        Main.window.setTitle("Spel Opties");
         Main.window.show();
+
+
 
 
 // Vult de view met data uit model

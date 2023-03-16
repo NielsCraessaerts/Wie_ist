@@ -72,6 +72,7 @@ public class HighScoresView extends VBox {
         this.getChildren().add(lblAantalbeurtenInvoer);
         this.getChildren().add(txtAantalBeurten);
         this.getChildren().add(btnWrite);
+        this.setPrefSize(800,800);
     }
 
 
