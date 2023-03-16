@@ -1,4 +1,4 @@
-package be.kdg.wieishet.view.highScores;
+package be.kdg.wieishet.view.HighScores;
 
 import be.kdg.wieishet.Model.WieishetModel;
 import be.kdg.wieishet.view.HighScores.HighScoresView;

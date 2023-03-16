@@ -1,6 +1,14 @@
 package be.kdg.wieishet.view.welcomeScreen;
 import be.kdg.wieishet.Model.WieishetModel;
-import be.kdg.wieishet.view.;
+import be.kdg.wieishet.view.HighScores.*;
+import be.kdg.wieishet.view.HighScores.*;
+import be.kdg.wieishet.view.welcomeScreen.*;
+import be.kdg.wieishet.Main;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 
 
 public class WelcomePresenter {
@@ -13,9 +21,23 @@ public class WelcomePresenter {
         this.updateView();
     }
     private void addEventHandlers() {
-WelcomeView.getbtn
+        view.getBtnHighscore().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                updateView();
+
+            }
+        });
     }
     private void updateView() {
+        HighScoresView HighScoresView = new HighScoresView();
+        HighScoresPresenter HighScoresPresenter = new HighScoresPresenter(model,HighScoresView);
+        Scene Highscores = new Scene(HighScoresView);
+        Main.window.setScene(Highscores);
+        Main.window.setTitle("Highscores");
+        Main.window.show();
+
+
 // Vult de view met data uit model
     }
     public void addWindowEventHandlers () {

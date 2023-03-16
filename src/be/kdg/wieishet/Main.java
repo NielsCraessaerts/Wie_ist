@@ -1,34 +1,16 @@
+package be.kdg.wieishet;
+
 import javafx.application.Application;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import be.kdg.wieishet.Model.*;
 import be.kdg.wieishet.view.welcomeScreen.*;
 
 
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-import static javafx.scene.input.KeyCode.V;
 
 public class Main extends Application{
-
+    public static Stage window;
     public static void main(String[] args) {
         Application.launch(args);
     }
@@ -620,12 +602,13 @@ public class Main extends Application{
 //
 //        mijnStage.show();
         //</editor-fold>
+        Main.window = mijnStage;
         WieishetModel model = new WieishetModel();
         WelcomeView view = new WelcomeView();
         WelcomePresenter presenter = new WelcomePresenter(model, view);
-        mijnStage.setScene(new Scene(view));
+        window.setScene(new Scene(view));
         presenter.addWindowEventHandlers();
-        mijnStage.show();
+        window.show();
 
     }
 }
