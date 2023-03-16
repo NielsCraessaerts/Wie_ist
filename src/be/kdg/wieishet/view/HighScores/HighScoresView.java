@@ -1,5 +1,6 @@
 package be.kdg.wieishet.view.HighScores;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,7 +19,7 @@ public class HighScoresView extends VBox {
     private Label lblAantalBeurten;
     private Button btnRead;
     private Button btnWrite;
-    private Button btnAdd;
+
     private TextField txtSpelernaam;
     private TextField txtAantalBeurten;
     private GridPane mijnGridPane;
@@ -28,6 +29,10 @@ public class HighScoresView extends VBox {
     private BackgroundImage backgroundImg;
     private Background background;
     private Button btnBack;
+    private HBox buttonbox;
+    private VBox inputBox;
+
+    private BorderPane inputpane;
 
 
     public HighScoresView() {
@@ -45,31 +50,58 @@ public class HighScoresView extends VBox {
         lblAantalBeurten = new Label("Score");
         btnRead = new Button("Read");
         btnWrite = new Button("Write");
-        btnAdd = new Button("Add");
+
         txtSpelernaam = new TextField();
         txtAantalBeurten = new TextField();
         mijnGridPane = new GridPane();
         btnBack = new Button("Back");
+        inputpane = new BorderPane();
+        buttonbox = new HBox(20);
+        inputBox = new VBox(10);
         this.setBackground(new Background(new BackgroundImage(new Image("/achtergrond.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
     }
 
     private void layoutNodes() {
 
-
-        lblNaaminvoer.setStyle("-fx-text-fill:white;-fx-font-size:14px;-fx-font-weight:bold;");
+        lblPlaats.setStyle("-fx-text-fill:black;-fx-font-size:14px;-fx-font-weight:bold;");
+        lblPlaats.setUnderline(true);
+        lblSpelernaam.setStyle("-fx-text-fill:black;-fx-font-size:14px;-fx-font-weight:bold;");
+        lblSpelernaam.setUnderline(true);
+        lblAantalBeurten.setStyle("-fx-text-fill:black;-fx-font-size:14px;-fx-font-weight:bold;");
+        lblAantalBeurten.setUnderline(true);
+        lblNaaminvoer.setStyle("-fx-text-fill:black;-fx-font-size:14px;-fx-font-weight:bold;");
         txtSpelernaam.setStyle("-fx-text-fill:gray;-fx-font-size:14px;");
-        lblAantalbeurtenInvoer.setStyle("-fx-text-fill:white;-fx-font-size:14px;-fx-font-weight:bold;");
+        lblAantalbeurtenInvoer.setStyle("-fx-text-fill:black;-fx-font-size:14px;-fx-font-weight:bold;");
         txtAantalBeurten.setStyle("-fx-text-fill:gray;-fx-font-size:14px;");
+        btnRead.setStyle("-fx-font-size:16px;-fx-font-weight:bold;");
+        btnWrite.setStyle("-fx-font-size:16px;-fx-font-weight:bold;");
+        btnBack.setStyle("-fx-font-size:16px;-fx-font-weight:bold;");
+
+
+        buttonbox.getChildren().addAll(btnRead, btnWrite,  btnBack);
+        buttonbox.setAlignment(Pos.CENTER);
+
+       inputBox.getChildren().addAll(lblNaaminvoer, txtSpelernaam, lblAantalbeurtenInvoer, txtAantalBeurten);
+        inputBox.setAlignment(Pos.CENTER);
+
+
+        inputpane.setCenter(inputBox);
+        inputpane.setBottom(buttonbox);
+        inputpane.setMaxWidth(400);
+        inputpane.setStyle("-fx-background-color: #f5f5f5; -fx-padding: 20px; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-border-color: red; -fx-border-width: 2px;");
+
+        mijnGridPane.setStyle("-fx-background-color: #f5f5f5; -fx-padding: 20px; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-border-color: blue; -fx-border-width: 2px;");
+
+        VBox.setMargin(inputpane, new Insets(20));
+        VBox.setMargin(mijnGridPane, new Insets(20));
+        VBox.setMargin(btnBack, new Insets(20));
+
+        mijnGridPane.setHgap(75);
+        mijnGridPane.setVgap(10);
 
         this.getChildren().add(mijnGridPane);
-        this.getChildren().add(btnBack);
-        this.setAlignment(Pos.CENTER_RIGHT);
-        this.getChildren().add(btnRead);
-        this.getChildren().add(lblNaaminvoer);
-        this.getChildren().add(txtSpelernaam);
-        this.getChildren().add(lblAantalbeurtenInvoer);
-        this.getChildren().add(txtAantalBeurten);
-        this.getChildren().add(btnWrite);
+        this.getChildren().add(inputpane);
+
         this.setPrefSize(800, 800);
     }
 
@@ -101,9 +133,8 @@ public class HighScoresView extends VBox {
         return btnWrite;
     }
 
-    public Button getBtnAdd() {
-        return btnAdd;
-    }
+
+
 
     public TextField getTxtSpelernaam() {
         return txtSpelernaam;

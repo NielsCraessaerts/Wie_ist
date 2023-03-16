@@ -70,7 +70,7 @@ public class HighScoresPresenter {
         view.getMijnGridPane().add(view.getLblSpelernaam(), 1, 0);
         view.getMijnGridPane().add(view.getLblAantalBeurten(), 2, 0);
 
-        view.getMijnGridPane().setGridLinesVisible(true);
+        view.getMijnGridPane().setGridLinesVisible(false);
 
         List<Highscores> spelersinformatie = model.readHighscore();
         TreeSet<Highscores> gesorteerdeHigscores = new TreeSet<>();

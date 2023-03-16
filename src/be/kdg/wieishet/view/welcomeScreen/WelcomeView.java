@@ -27,7 +27,7 @@ public class WelcomeView extends VBox {
 
     private void initialoseNodes() {
         this.lblTitel = new Label("Wie is't ?");
-        this.btnNiewSpel = new Button("Niew Spel ");
+        this.btnNiewSpel = new Button("Nieuw Spel ");
         this.btnSpelOpties = new Button("Spel Opties ");
         this.btnHighscore = new Button("Highscores ");
         this.btnExit = new Button("Exit");
