@@ -1,10 +1,14 @@
 package be.kdg.wieishet.view.HighScores;
 
+import be.kdg.wieishet.Main;
 import be.kdg.wieishet.Model.WieishetModel;
 import be.kdg.wieishet.view.HighScores.HighScoresView;
 import be.kdg.wieishet.Model.*;
+import be.kdg.wieishet.view.Welcomescreen.WelcomePresenter;
+import be.kdg.wieishet.view.Welcomescreen.WelcomeView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
 import java.util.List;
@@ -44,6 +48,17 @@ public class HighScoresPresenter {
                 Highscores nieuweHighscore = new Highscores(view.getTxtSpelernaam().getText(), Integer.parseInt(view.getTxtAantalBeurten().getText()));
                 model.addHighscore(nieuweHighscore);
                 updateView();
+            }
+        });
+        view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                WelcomeView Welcomeview = new WelcomeView();
+                WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
+                Scene Homescreen = new Scene(Welcomeview);
+                Main.window.setScene(Homescreen);
+                Main.window.setTitle("Hoofdmenu");
+                Main.window.show();
             }
         });
     }

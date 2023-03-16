@@ -3,8 +3,8 @@ package be.kdg.wieishet.view.SpelOpties;
 import be.kdg.wieishet.Main;
 import be.kdg.wieishet.Model.WieishetModel;
 import be.kdg.wieishet.view.SpelOpties.SpelOptiesView;
-import be.kdg.wieishet.view.welcomeScreen.WelcomePresenter;
-import be.kdg.wieishet.view.welcomeScreen.WelcomeView;
+import be.kdg.wieishet.view.Welcomescreen.*;
+//import be.kdg.wieishet.view.welcomeScreen.WelcomeView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -44,11 +44,12 @@ public class SpelOptiesPresenter {
         view.getSoundCheckBox().setSelected(model.isSoundEnabled());
         view.getMusicCheckBox().setSelected(model.isMusicEnabled());
 
-        WieishetModel model = new WieishetModel();
-        WelcomeView view = new WelcomeView();
-        WelcomePresenter presenter = new WelcomePresenter(model, view);
-        Main.window.setScene(new Scene(view));
-        presenter.addWindowEventHandlers();
+
+        WelcomeView Welcomeview = new WelcomeView();
+        WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
+        Scene Homescreen = new Scene(Welcomeview);
+        Main.window.setScene(Homescreen);
+        Main.window.setTitle("Hoofdmenu");
         Main.window.show();
     }
 

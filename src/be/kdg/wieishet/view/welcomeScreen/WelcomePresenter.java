@@ -1,15 +1,21 @@
-package be.kdg.wieishet.view.welcomeScreen;
+package be.kdg.wieishet.view.Welcomescreen;
 import be.kdg.wieishet.Model.WieishetModel;
 import be.kdg.wieishet.view.HighScores.*;
 import be.kdg.wieishet.view.HighScores.*;
 import be.kdg.wieishet.view.SpelOpties.SpelOptiesPresenter;
 import be.kdg.wieishet.view.SpelOpties.SpelOptiesView;
-import be.kdg.wieishet.view.welcomeScreen.*;
+
 import be.kdg.wieishet.Main;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+
+
+import java.util.Optional;
+
 
 
 
@@ -26,31 +32,46 @@ public class WelcomePresenter {
         view.getBtnHighscore().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                updateView();
 
+                HighScoresView HighScoresView = new HighScoresView();
+                HighScoresPresenter HighScoresPresenter = new HighScoresPresenter(model,HighScoresView);
+                Scene Highscores = new Scene(HighScoresView);
+                Main.window.setScene(Highscores);
+                Main.window.setTitle("Highscores");
+                Main.window.show();
             }
         });
         view.getBtnSpelOpties().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                updateView();
+                SpelOptiesView SpelOptiesView = new SpelOptiesView();
+                SpelOptiesPresenter SpelOptiesPresenter = new SpelOptiesPresenter(model,SpelOptiesView);
+                Scene SpelOpties = new Scene(SpelOptiesView);
+                Main.window.setScene(SpelOpties);
+                Main.window.setTitle("Spel Opties");
+                Main.window.show();
+            }
+        });
+
+        view.getBtnExit().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Spel stoppen");
+                alert.setHeaderText("Bent u zeker dat u het spel wilt beëindigen ?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent()&& result.get() == ButtonType.OK){
+                    System.exit(0);
+                }
+
             }
         });
     }
     private void updateView() {
-//        HighScoresView HighScoresView = new HighScoresView();
-//        HighScoresPresenter HighScoresPresenter = new HighScoresPresenter(model,HighScoresView);
-//        Scene Highscores = new Scene(HighScoresView);
-//        Main.window.setScene(Highscores);
-//        Main.window.setTitle("Highscores");
-//        Main.window.show();
 
-        SpelOptiesView SpelOptiesView = new SpelOptiesView();
-        SpelOptiesPresenter SpelOptiesPresenter = new SpelOptiesPresenter(model,SpelOptiesView);
-        Scene SpelOpties = new Scene(SpelOptiesView);
-        Main.window.setScene(SpelOpties);
-        Main.window.setTitle("Spel Opties");
-        Main.window.show();
+
+
 
 
 

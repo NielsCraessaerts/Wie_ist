@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import be.kdg.wieishet.Model.*;
-import be.kdg.wieishet.view.welcomeScreen.*;
+import be.kdg.wieishet.view.Welcomescreen.*;
 
 
 import java.io.FileNotFoundException;

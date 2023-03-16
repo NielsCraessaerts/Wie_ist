@@ -1,4 +1,4 @@
-package be.kdg.wieishet.view.welcomeScreen;
+package be.kdg.wieishet.view.Welcomescreen;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -32,6 +32,7 @@ public class WelcomeView extends VBox {
         this.btnHighscore = new Button("Highscores ");
         this.btnExit = new Button("Exit");
         this.VBoxButtons = new VBox();
+        this.setBackground(new Background(new BackgroundImage(new Image("/achtergrond.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 
 
     }
@@ -62,7 +63,6 @@ public class WelcomeView extends VBox {
         this.setPrefSize(800, 800);
 
 
-        this.setBackground(new Background(new BackgroundImage(new Image("/achtergrond.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 
         ;
 
