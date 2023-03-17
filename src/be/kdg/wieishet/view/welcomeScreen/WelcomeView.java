@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
@@ -16,6 +17,7 @@ public class WelcomeView extends VBox {
     private Button btnHighscore;
     private Button btnExit;
     private VBox VBoxButtons;
+    private ImageView imageView;
 
 
 
@@ -33,7 +35,7 @@ public class WelcomeView extends VBox {
         this.btnExit = new Button("Exit");
         this.VBoxButtons = new VBox();
         this.setBackground(new Background(new BackgroundImage(new Image("/achtergrond.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-
+        this.imageView = new ImageView(new Image("/header_logo.png"));
 
     }
 
@@ -53,6 +55,8 @@ public class WelcomeView extends VBox {
                         "-fx-effect: dropshadow(three-pass-box, #666666, 10, 0, 0, 0);");
             }
         }
+        imageView.setFitWidth(200); // Set the width of the image
+        imageView.setPreserveRatio(true);
 
         lblTitel.setAlignment(Pos.TOP_CENTER);
         VBoxButtons.setAlignment(Pos.CENTER_LEFT);
@@ -93,10 +97,8 @@ public class WelcomeView extends VBox {
         return VBoxButtons;
     }
 
-
-
-
-
-
+    public ImageView getImageView() {
+        return imageView;
+    }
 }
 

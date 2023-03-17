@@ -74,7 +74,7 @@ public class WelcomePresenter {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Spel stoppen");
                 alert.setHeaderText("Bent u zeker dat u het spel wilt beëindigen ?");
-
+                alert.setGraphic(view.getImageView());
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent()&& result.get() == ButtonType.OK){
                     System.exit(0);
