@@ -1,5 +1,0 @@
-"Janine", Geslacht.Vrouwelijk, Kleur.Blond, Haar.Lang, Gezichtsbeharing.Niets, Extra.Hoed,1
-"Frans", Geslacht.Mannelijk, Kleur.Blond, Haar.Kort, Gezichtsbeharing.Niets, Extra.Niets,2
-"Fries", Geslacht.Noglevend, Kleur.Blond, Haar.Kort, Gezichtsbeharing.Baard, Extra.Hoed,3
-"Anne", Geslacht.Vrouwelijk, Kleur.Bruin, Haar.Lang, Gezichtsbeharing.Niets, Extra.Oorbel,4
-"Hans",Geslacht.Mannelijk, Kleur.Zwart, Haar.Kort, Gezichtsbeharing.Baard, Extra.Hoed,5

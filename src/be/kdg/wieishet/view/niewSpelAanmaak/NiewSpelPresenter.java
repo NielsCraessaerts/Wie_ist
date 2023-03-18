@@ -1,5 +1,10 @@
 package be.kdg.wieishet.view.niewSpelAanmaak;
 import be.kdg.wieishet.Main;
+import be.kdg.wieishet.Model.Enums.Spelerskleur;
+import be.kdg.wieishet.Model.Persoon;
+import be.kdg.wieishet.Model.Spelbord;
+import be.kdg.wieishet.Model.Speler;
+import be.kdg.wieishet.Model.Persoon.*;
 import be.kdg.wieishet.Model.WieishetModel;
 import be.kdg.wieishet.view.Welcomescreen.WelcomePresenter;
 import be.kdg.wieishet.view.Welcomescreen.WelcomeView;
@@ -8,6 +13,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+
+import java.util.Map;
+
+
 
 public class NiewSpelPresenter {
 
@@ -21,6 +31,7 @@ public class NiewSpelPresenter {
         this.addEventHandlers();
         this.updateView();
     }
+
 
     private void addEventHandlers() {
         // Koppelt event handlers (anon. inner klassen)
@@ -40,21 +51,35 @@ public class NiewSpelPresenter {
             }
         });
         view.getStartButton().setOnAction(event -> {
-            // Get the player name entered by the user
-            String playerName = view.getPlayerName();
+
+
+            model.getSpeler1().setSpelersnaam( view.getPlayerNameField().getText());
+            model.getSpeler1().setSpelerskleur(Spelerskleur.Blauw);
+            model.getSpeler1().setAantalBeurten(0);
+
+
             // Do something with the player name
             // ...
+            System.out.println(model.getSpeler1().getSpelersnaam());
         });
 
         view.getCharacterGrid().getChildren().forEach(node -> {
-            if (node instanceof Button) {
-                ((Button) node).setOnAction(event -> {
-                    // Handle character selection
+            System.out.println("view");
+            if (node instanceof ToggleButton) {
+                System.out.println("start if");
+                ((ToggleButton) node).setOnAction(event -> {
+                    System.out.println("start getKarakter");
+//                    Persoon persoon = Persoon.getkarakterId();
+//                    model.getSpeler1().setTeRadenPersoon(persoon);
+//                    System.out.println(Persoon.getKarakterid(karakterid));
+//                    System.out.println(karakterid);
+//                    model.setSpeler1(view.getPlayerNameField().getText(),persoon, spelbord,0,Spelerskleur.Blauw);
                     // ...
                 });
             }
         });
     }
+
 
     private void updateView() {
         // Vult de view met data uit model

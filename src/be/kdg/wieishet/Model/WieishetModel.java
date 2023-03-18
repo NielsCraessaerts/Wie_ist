@@ -1,8 +1,9 @@
 package be.kdg.wieishet.Model;
 
+import be.kdg.wieishet.Model.Enums.Spelerskleur;
+
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,8 @@ public class WieishetModel {
         musicEnabled = true;
         try{
         characters = new Persoon[24];
-        BufferedReader ConfigReader = new BufferedReader(new FileReader("/txt files/KarakterAanmaak.txt"));
+        String Filepath = "C:\\1.KDG ACTIVITEITEN\\PROGRAMMEREN\\Ik begin dees muug te worde\\getfucked2\\.idea\\Inventory\\txtfiles\\KarakterAanmaak.txt";
+        BufferedReader ConfigReader = new BufferedReader(new FileReader(Filepath));
         String Line = ConfigReader.readLine();
          int counter = 0;
 
@@ -42,9 +44,12 @@ public class WieishetModel {
                 Line = ConfigReader.readLine();
 
             }
-        }
-        catch(IOException e){}
 
+        }
+        catch(IOException e){System.out.println(e.getMessage());}
+        System.out.println(characters[1].Naam);
+        speler1 = new Speler();
+        speler2 = new Speler();
 
     }
 
@@ -52,10 +57,19 @@ public class WieishetModel {
         return speler1;
     }
 
-    public void setSpeler1(Speler speler1) {
-        this.speler1 = speler1;
+    public void setSpeler1(String spelersnaam, Persoon teRadenPersoon, Spelbord spelbord, int aantalBeurten, Spelerskleur spelerskleur) {
+        if (speler1 == null) {
+            speler1 = new Speler(spelersnaam,teRadenPersoon, spelbord, aantalBeurten,spelerskleur);
+        }
+        speler1.setSpelersnaam(spelersnaam);
+        speler1.setTeRadenPersoon(teRadenPersoon);
+        speler1.setSpelbord(spelbord);
+        speler1.setAantalBeurten(aantalBeurten);
+        speler1.setSpelerskleur(spelerskleur);
     }
-
+    public void  setSpeler1(Speler Aspeler) {
+        speler1 = Aspeler;
+    }
     public Speler getSpeler2() {
         return speler2;
     }
@@ -72,8 +86,9 @@ public class WieishetModel {
         this.huidigeSpeler = huidigeSpeler;
     }
 
-
-
+    public Persoon[] getCharacters() {
+        return characters;
+    }
 
     public void addHighscore(Highscores toAddHighscores) {
         File Highscores = new File(".idea\\Inventory\\Highscores.csv");

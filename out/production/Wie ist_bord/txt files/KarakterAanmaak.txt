@@ -1,5 +1,24 @@
-"Janine", Geslacht.Vrouwelijk, Kleur.Blond, Haar.Lang, Gezichtsbeharing.Niets, Extra.Hoed,1
+"Mario", Geslacht.Mannelijk, Kleur.Zwart, Haar.Kort, Gezichtsbeharing.Snor, Extra.Hoed,1
 "Frans", Geslacht.Mannelijk, Kleur.Blond, Haar.Kort, Gezichtsbeharing.Niets, Extra.Niets,2
 "Fries", Geslacht.Noglevend, Kleur.Blond, Haar.Kort, Gezichtsbeharing.Baard, Extra.Hoed,3
 "Anne", Geslacht.Vrouwelijk, Kleur.Bruin, Haar.Lang, Gezichtsbeharing.Niets, Extra.Oorbel,4
 "Hans",Geslacht.Mannelijk, Kleur.Zwart, Haar.Kort, Gezichtsbeharing.Baard, Extra.Hoed,5
+"Sophie", Geslacht.Vrouwelijk, Kleur.Blond, Haar.Lang, Gezichtsbeharing.Niets, Extra.Niets, 6
+"Robert", Geslacht.Mannelijk, Kleur.Bruin, Haar.Kort, Gezichtsbeharing.Niets, Extra.Bril, 7
+"Emma", Geslacht.Vrouwelijk, Kleur.Rood, Haar.Kort, Gezichtsbeharing.Niets, Extra.Niets, 8
+"Tim", Geslacht.Mannelijk, Kleur.Bruin, Haar.Lang, Gezichtsbeharing.Baard, Extra.Niets, 9
+"Marieke", Geslacht.Vrouwelijk, Kleur.Zwart, Haar.Lang, Gezichtsbeharing.Niets, Extra.Oorbel, 10
+"Pieter", Geslacht.Mannelijk, Kleur.Bruin, Haar.Kort, Gezichtsbeharing.Snor, Extra.Niets, 11
+"Lisa", Geslacht.Vrouwelijk, Kleur.Blond, Haar.Lang, Gezichtsbeharing.Niets, Extra.Niets, 12
+"Jan", Geslacht.Mannelijk, Kleur.Zwart, Haar.Lang, Gezichtsbeharing.Baard, Extra.Hoed, 13
+"Eva", Geslacht.Vrouwelijk, Kleur.Bruin, Haar.Lang, Gezichtsbeharing.Niets, Extra.Oorbel, 14
+"Joost", Geslacht.Mannelijk, Kleur.Bruin, Haar.Kort, Gezichtsbeharing.Snor, Extra.Niets, 15
+"Maria", Geslacht.Vrouwelijk, Kleur.Zwart, Haar.Lang, Gezichtsbeharing.Niets, Extra.Niets, 16
+"Lucas", Geslacht.Mannelijk, Kleur.Blond, Haar.Kort, Gezichtsbeharing.Niets, Extra.Niets, 17
+"Laura", Geslacht.Vrouwelijk, Kleur.Bruin, Haar.Lang, Gezichtsbeharing.Niets, Extra.Niets, 18
+"Karel", Geslacht.Mannelijk, Kleur.Zwart, Haar.Kort, Gezichtsbeharing.Baard, Extra.Niets, 19
+"Sofie", Geslacht.Vrouwelijk, Kleur.Rood, Haar.Kort, Gezichtsbeharing.Niets, Extra.Niets, 20
+"Joris", Geslacht.Mannelijk, Kleur.Bruin, Haar.Kort, Gezichtsbeharing.Snor, Extra.Niets, 21
+"Lena", Geslacht.Vrouwelijk, Kleur.Bruin, Haar.Lang, Gezichtsbeharing.Niets, Extra.Niets, 22
+"Simon", Geslacht.Mannelijk, Kleur.Bruin, Haar.Kort, Gezichtsbeharing.Baard, Extra.Niets, 23
+"Emma", Geslacht.Vrouwelijk, Kleur.Bruin, Haar.Lang, Gezichtsbeharing.Niets, Extra.Niets, 24

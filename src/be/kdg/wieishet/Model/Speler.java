@@ -10,11 +10,14 @@ public class Speler {
     private Spelerskleur spelerskleur;
 
     public Speler(String spelersnaam, Persoon teRadenPersoon, Spelbord spelbord, int aantalBeurten, Spelerskleur spelerskleur) {
-        this.Spelersnaam = spelersnaam;
-        this.TeRadenPersoon = teRadenPersoon;
+        this.Spelersnaam = getSpelersnaam();
+        this.TeRadenPersoon = getTeRadenPersoon();
         this.spelbord = spelbord;
         this.AantalBeurten = aantalBeurten;
         this.spelerskleur = spelerskleur;
+    }
+    public Speler(){
+
     }
 
     public String getSpelersnaam() {
@@ -56,4 +59,5 @@ public class Speler {
     public void setSpelerskleur(Spelerskleur spelerskleur) {
         this.spelerskleur = spelerskleur;
     }
+
 }

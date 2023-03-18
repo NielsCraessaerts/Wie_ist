@@ -1,6 +1,9 @@
 package be.kdg.wieishet.Model;
 import be.kdg.wieishet.Model.Enums.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.util.HashMap;
 
 public class Persoon  {
     public Geslacht geslacht;
@@ -9,9 +12,10 @@ public class Persoon  {
     public Gezichtsbeharing gezichtsbeharing;
     public Extra extra;
     public String Naam;
-    private int karakterid;
+    public  int karakterid;
     private String config;
-    private Image karakter;
+    private  ImageView karakter;
+
 
 
     public Persoon(String Naam, Geslacht geslacht, Kleur kleur, Haar haar, Gezichtsbeharing gezichtsbeharing, Extra extra, int karakterid) {
@@ -22,13 +26,14 @@ public class Persoon  {
         this.extra = extra;
         this.Naam = Naam;
         this.karakterid = karakterid;
-        this.karakter = new Image("/characters/character" + karakterid + ".png");
+        this.karakter = new ImageView("/characters/character" + karakterid + ".png");
+
     }
 
+
+
     public Persoon(String config) {
-
         String[] config2 = config.split(",");
-
 
         this.Naam = config2[0];
         this.geslacht = Geslacht.valueOf(config2[1]);
@@ -37,13 +42,22 @@ public class Persoon  {
         this.gezichtsbeharing = Gezichtsbeharing.valueOf(config2[4]);
         this.extra = Extra.valueOf(config2[5]);
         this.karakterid = Integer.parseInt(config2[6]);
-        this.karakter = new Image("/characters/character" + karakterid + ".png");
+        this.karakter = new ImageView("/characters/character" + karakterid + ".png");
 
 
     }
 
-    public Image getImage() {
-     return new Image("/characters/character"+this.karakterid+".png");
+
+    public  Image getImage( ) {
+     return new Image("/characters/character" + karakterid + ".png");
+    }
+
+    public  int getKarakterid() {
+        return karakterid;
+    }
+
+    public  ImageView getKarakter() {
+        return karakter;
     }
 
     public Geslacht getGeslacht() {
@@ -70,13 +84,11 @@ public class Persoon  {
         return Naam;
     }
 
-    public int getKarakterid() {
-        return karakterid;
-    }
 
-    public Image getKarakter() {
-        return karakter;
-    }
+
+
+
+
 
     public boolean isGelijkAan(String question) {
         // Gebruik de vraag van de speler om te bepalen of het karakter aan de eigenschap voldoet

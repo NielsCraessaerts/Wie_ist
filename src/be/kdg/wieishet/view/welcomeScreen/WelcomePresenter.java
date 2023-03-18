@@ -38,9 +38,9 @@ public class WelcomePresenter {
 
                 NieuwSpelView NieuwSpelView = new NieuwSpelView();
                 NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model,NieuwSpelView);
-                Scene Highscores = new Scene(NieuwSpelView);
-                Main.window.setScene(Highscores);
-                Main.window.setTitle("Highscores");
+                Scene Nieuwspel = new Scene(NieuwSpelView);
+                Main.window.setScene(Nieuwspel);
+                Main.window.setTitle("Nieuw Spel");
                 Main.window.show();
             }
         });

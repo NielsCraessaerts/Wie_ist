@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import be.kdg.wieishet.Model.*;
 import be.kdg.wieishet.view.Welcomescreen.*;
+import be.kdg.wieishet.view.spelbord.*;
 
 
 import java.io.FileNotFoundException;
@@ -604,8 +605,8 @@ public class Main extends Application{
         //</editor-fold>
         Main.window = mijnStage;
         WieishetModel model = new WieishetModel();
-        WelcomeView view = new WelcomeView();
-        WelcomePresenter presenter = new WelcomePresenter(model, view);
+        SpelbordView view = new SpelbordView();
+        SpelbordPresenter presenter = new SpelbordPresenter(model, view);
         window.setScene(new Scene(view));
         presenter.addWindowEventHandlers();
         window.show();
