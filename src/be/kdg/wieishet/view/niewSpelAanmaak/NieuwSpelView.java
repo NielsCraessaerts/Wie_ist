@@ -1,5 +1,6 @@
 package be.kdg.wieishet.view.niewSpelAanmaak;
 
+import be.kdg.wieishet.Model.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -7,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 public class NieuwSpelView extends VBox {
@@ -40,8 +42,10 @@ public class NieuwSpelView extends VBox {
         // Add some sample characters to the grid
         for (int i = 0; i < 24; i++) {
             int p = (i + 1);
-            Button characterButton = new Button("Character " + p);
-            characterGrid.add(characterButton, i % 4, i / 4);
+            Button characterButton = new Button();
+            ImageView characterImageView = new ImageView(new Image("/characters/character" + p + ".png"));
+            characterButton.setGraphic(characterImageView);
+            characterGrid.add(characterButton, i % 6, i / 6);
         }
     }
 
@@ -49,6 +53,7 @@ public class NieuwSpelView extends VBox {
         // Layout van de Nodes
         // add… methodes (of set…)
         // Insets, padding, alignment, …
+        characterGrid.setStyle("-fx-background-color: red;");
         characterGrid.setAlignment(Pos.CENTER);
         this.getChildren().addAll(playerNameLabel, playerNameField, startButton, characterGrid,switchToPlayer2Button,btnBack);
         this.setSpacing(10);
@@ -60,7 +65,7 @@ public class NieuwSpelView extends VBox {
         switchToPlayer2Button.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
         btnBack.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
         switchToPlayer2Button.setAlignment(Pos.BOTTOM_RIGHT);
-        characterGrid.setStyle("-fx-background-color: #ffffff;");
+
     }
 
     // Implementation of the necessary package-private getters

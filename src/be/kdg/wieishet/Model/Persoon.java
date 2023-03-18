@@ -70,6 +70,14 @@ public class Persoon  {
         return Naam;
     }
 
+    public int getKarakterid() {
+        return karakterid;
+    }
+
+    public Image getKarakter() {
+        return karakter;
+    }
+
     public boolean isGelijkAan(String question) {
         // Gebruik de vraag van de speler om te bepalen of het karakter aan de eigenschap voldoet
         if (question.contains("man") || question.contains("vrouw")) {
