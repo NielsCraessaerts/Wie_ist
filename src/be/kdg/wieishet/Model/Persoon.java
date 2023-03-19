@@ -96,8 +96,8 @@ public class Persoon  {
             return geslacht.isGelijkAan(question);
         } else if (question.contains("bruin") || question.contains("kaal") || question.contains("rood")|| question.contains("blauw") || question.contains("groen") || question.contains("blond") || question.contains("zwart")) {
             return kleur.isGelijkAan(question);
-        } else if (question.contains("bril") || question.contains("pet") || question.contains("oorbel") || question.contains("ketting") || question.contains("geen")  || question.contains("hoed")) {
-            return extra.isGelijkAan(question);
+        } else if (question.equals("Bril") || question.equals("Hoed") || question.equals("Oorbel") || question.equals("Ketting") || question.equals("Niets") ) {
+            return true;
         } else if (question.contains("bril") || question.contains("pet") || question.contains("oorbel") || question.contains("ketting") || question.contains("geen")  || question.contains("hoed")) {
             return haar.isGelijkAan(question);
         } else if (question.contains("kort") || question.contains("lang") || question.contains("kaal") || question.contains("middelang")){
@@ -109,13 +109,15 @@ public class Persoon  {
 
     @Override
     public String toString() {
-        return "be.kdg.wieishet.Model.Persoon{" +" Naam=" + Naam +
-                ", geslacht=" + geslacht +
+        return "Persoon{" +
+                "geslacht=" + geslacht +
                 ", kleur=" + kleur +
                 ", haar=" + haar +
                 ", gezichtsbeharing=" + gezichtsbeharing +
                 ", extra=" + extra +
-                '\'' +
+                ", Naam='" + Naam + '\'' +
+                ", karakterid=" + karakterid +
+                ", karakter=" + karakter +
                 '}';
     }
 }

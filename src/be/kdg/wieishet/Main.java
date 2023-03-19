@@ -603,10 +603,19 @@ public class Main extends Application{
 //
 //        mijnStage.show();
         //</editor-fold>
+//        Main.window = mijnStage;
+//        WieishetModel model = new WieishetModel();
+//        SpelbordView view = new SpelbordView();
+//        SpelbordPresenter presenter = new SpelbordPresenter(model, view);
+//        window.setScene(new Scene(view));
+//        presenter.addWindowEventHandlers();
+//        window.show();
+
+
         Main.window = mijnStage;
         WieishetModel model = new WieishetModel();
-        SpelbordView view = new SpelbordView();
-        SpelbordPresenter presenter = new SpelbordPresenter(model, view);
+        WelcomeView view = new WelcomeView();
+        WelcomePresenter presenter = new WelcomePresenter(model, view);
         window.setScene(new Scene(view));
         presenter.addWindowEventHandlers();
         window.show();

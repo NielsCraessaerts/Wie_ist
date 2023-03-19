@@ -1,9 +1,9 @@
 "Mario",Mannelijk,Zwart,Kort,Snor,Hoed,1
-"Frans",Mannelijk,Blond,Kort,Niets,Niets,2
-"Fries",Noglevend,Blond,Kort,Baard,Hoed,3
-"Anne",Vrouwelijk,Bruin,Lang,Niets,Oorbel,4
-"Hans",Mannelijk,Zwart,Kort,Baard,Hoed,5
-"Sophie",Vrouwelijk,Blond,Lang,Niets,Niets,6
+"Marie",Mannelijk,Blond,Kort,Niets,Niets,2
+"Frans",Noglevend,Blond,Kort,Baard,Hoed,3
+"Matt",Vrouwelijk,Bruin,Lang,Niets,Oorbel,4
+"Jean",Mannelijk,Zwart,Kort,Baard,Hoed,5
+"Albert",Vrouwelijk,Blond,Lang,Niets,Niets,6
 "Robert",Mannelijk,Bruin,Kort,Niets,Bril,7
 "Emma",Vrouwelijk,Rood,Kort,Niets,Niets,8
 "Tim",Mannelijk,Bruin,Lang,Baard,Niets,9

@@ -28,6 +28,9 @@ public class NieuwSpelView extends VBox {
     private Button btnBack;
     private int buttonid;
     private ToggleButton characterButton;
+    private int selectedButtonID;
+    private int b;
+    private Button setNaam;
 
 
     public NieuwSpelView() {
@@ -48,23 +51,21 @@ public class NieuwSpelView extends VBox {
         characterGrid.setPadding(new Insets(10, 10, 10, 10));
         characterGrid.setHgap(10);
         characterGrid.setVgap(10);
+        setNaam = new Button("Bewaar Naam");
 
         // Add some sample characters to the grid
 
         for (int i = 0; i < 24; i++) {
-             buttonid = (i + 1);
+
+            buttonid = (i + 1);
             characterButton = new ToggleButton();
             characterButton.setId(Integer.toString(i));
             String filepath = "/characters/character" + buttonid + ".png";
             ImageView characterImageView = new ImageView(new Image(filepath));
-
+            int selectedButtonIDForLambda = i;
 
             characterButton.setGraphic(characterImageView);
             characterGrid.add(characterButton, i % 6, i / 6);
-
-
-            ;
-
         }
     }
 
@@ -78,7 +79,7 @@ public class NieuwSpelView extends VBox {
 
 //        characterGrid.setStyle("-fx-background-color: red;");
         characterGrid.setAlignment(Pos.CENTER);
-        this.getChildren().addAll(playerNameLabel, playerNameField, startButton, characterGrid,switchToPlayer2Button,btnBack);
+        this.getChildren().addAll(playerNameLabel, playerNameField, startButton,setNaam, characterGrid,switchToPlayer2Button,btnBack);
         this.setSpacing(10);
         this.setPadding(new Insets(10, 10, 10, 10));
         this.setBackground(new Background(new BackgroundImage(new Image("/achtergrond.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
@@ -91,9 +92,30 @@ public class NieuwSpelView extends VBox {
         characterGrid.setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
     }
 
+
+
     // Implementation of the necessary package-private getters
+
+    public Button getSetNaam() {
+        return setNaam;
+    }
+
     public Button getStartButton() {
         return startButton;
+    }
+    public  void setSelectedButtonID(int buttonID) {
+         buttonID = selectedButtonID;
+    }
+
+    public int getB() {
+        return b;
+    }
+
+    public int getSelectedButtonID() {
+
+
+
+        return selectedButtonID;
     }
 
     public String getPlayerName() {
@@ -122,7 +144,7 @@ public class NieuwSpelView extends VBox {
     }
 
     public int getButtonid() {
-        return buttonid;
+        return selectedButtonID;
     }
 
     public ToggleButton getCharacterButton() {

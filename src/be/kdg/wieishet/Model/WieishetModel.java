@@ -52,6 +52,22 @@ public class WieishetModel {
         speler2 = new Speler();
 
     }
+       public Persoon getCharacter(String naam){
+        for (int i = 0; i < characters.length;i++){
+            if(characters[i].Naam == naam){
+                return characters[i];
+            }
+        }
+        return null;
+    }
+    public Persoon getCharacter(int id){
+            System.out.println("IngetKarakter +" +id);
+            System.out.println(characters.length);
+                return characters[id];
+
+
+
+    }
 
     public Speler getSpeler1() {
         return speler1;
@@ -69,6 +85,17 @@ public class WieishetModel {
     }
     public void  setSpeler1(Speler Aspeler) {
         speler1 = Aspeler;
+    }
+
+    public void setSpeler2(String spelersnaam, Persoon teRadenPersoon, Spelbord spelbord, int aantalBeurten, Spelerskleur spelerskleur) {
+        if (speler2 == null) {
+            speler2 = new Speler(spelersnaam,teRadenPersoon, spelbord, aantalBeurten,spelerskleur);
+        }
+        speler2.setSpelersnaam(spelersnaam);
+        speler2.setTeRadenPersoon(teRadenPersoon);
+        speler2.setSpelbord(spelbord);
+        speler2.setAantalBeurten(aantalBeurten);
+        speler2.setSpelerskleur(spelerskleur);
     }
     public Speler getSpeler2() {
         return speler2;

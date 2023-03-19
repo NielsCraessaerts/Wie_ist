@@ -9,6 +9,8 @@ import be.kdg.wieishet.Model.WieishetModel;
 import be.kdg.wieishet.view.Welcomescreen.WelcomePresenter;
 import be.kdg.wieishet.view.Welcomescreen.WelcomeView;
 import be.kdg.wieishet.view.niewSpelAanmaak.*;
+import be.kdg.wieishet.view.spelbord.SpelbordPresenter;
+import be.kdg.wieishet.view.spelbord.SpelbordView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -30,6 +32,7 @@ public class NiewSpelPresenter {
         this.view = view;
         this.addEventHandlers();
         this.updateView();
+        model.setHuidigeSpeler( model.getSpeler1());
     }
 
 
@@ -50,12 +53,27 @@ public class NiewSpelPresenter {
                 Main.window.show();
             }
         });
+        view.getSetNaam().setOnAction(event -> {
+                    model.getHuidigeSpeler().setSpelersnaam( view.getPlayerNameField().getText());
+                });
+
         view.getStartButton().setOnAction(event -> {
 
 
-            model.getSpeler1().setSpelersnaam( view.getPlayerNameField().getText());
+
             model.getSpeler1().setSpelerskleur(Spelerskleur.Blauw);
+            model.getSpeler2().setSpelerskleur(Spelerskleur.Rood);
             model.getSpeler1().setAantalBeurten(0);
+            model.getSpeler2().setAantalBeurten(0);
+
+
+
+                SpelbordView SpelbordView = new SpelbordView();
+                SpelbordPresenter SpelbordPresenter = new SpelbordPresenter(model, SpelbordView);
+                Scene Spelbord = new Scene(SpelbordView);
+                Main.window.setScene(Spelbord);
+                Main.window.setTitle("Spelbord");
+                Main.window.show();
 
 
             // Do something with the player name
@@ -63,17 +81,27 @@ public class NiewSpelPresenter {
             System.out.println(model.getSpeler1().getSpelersnaam());
         });
 
+        view.getSwitchToPlayer2Button().setOnAction(event -> {
+            if (model.getHuidigeSpeler().equals(model.getSpeler1())){
+                model.setHuidigeSpeler(model.getSpeler2());
+            } else {
+                model.setHuidigeSpeler( model.getSpeler1());
+            }
+        });
+
+
         view.getCharacterGrid().getChildren().forEach(node -> {
             System.out.println("view");
             if (node instanceof ToggleButton) {
                 System.out.println("start if");
                 ((ToggleButton) node).setOnAction(event -> {
                     System.out.println("start getKarakter");
-//                    Persoon persoon = Persoon.getkarakterId();
-//                    model.getSpeler1().setTeRadenPersoon(persoon);
-//                    System.out.println(Persoon.getKarakterid(karakterid));
-//                    System.out.println(karakterid);
-//                    model.setSpeler1(view.getPlayerNameField().getText(),persoon, spelbord,0,Spelerskleur.Blauw);
+                    model.getSpeler1().setTeRadenPersoon(model.getCharacter(new Integer(node.getId())));
+                    System.out.println(model.getCharacter(node.getId()));
+                    System.out.println(model.getSpeler1().getTeRadenPersoon());
+                    System.out.println(node.getId());
+
+
                     // ...
                 });
             }
