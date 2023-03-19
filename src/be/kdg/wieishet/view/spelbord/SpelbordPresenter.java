@@ -1,7 +1,9 @@
 package be.kdg.wieishet.view.spelbord;
 
 import be.kdg.wieishet.Model.*;
+import be.kdg.wieishet.Model.Enums.Geslacht;
 import be.kdg.wieishet.view.spelbord.*;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -24,24 +26,173 @@ public class SpelbordPresenter {
     }
     private void addEventHandlers(){
 
-
-        view.getGeslacht().getChildrenUnmodifiable().forEach(node -> {
-            int characterIndex = Integer.parseInt(node.getId());
-                            String vraagGeslacht = view.getBtnGeslacht()[characterIndex].getText();
-                            System.out.println(vraagGeslacht);
-                            if(  model.getHuidigeSpeler().equals(model.getSpeler1())){
-                                model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagGeslacht);
-                                System.out.println(model.getSpeler2().getTeRadenPersoon().extra);
-
-                                System.out.println("Uw antwoord is "+model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagGeslacht));
-
-                            } else {
-                                model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht);
-                                System.out.println(model.getSpeler1().getTeRadenPersoon().extra);
-                                view.getLblAntwoordVraag().setText( Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht)));
-                                System.out.println("Uw antwoord is" +model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht));
-                            }
+//        view.getKeuzesAccordion().getPanes().forEach(titledPane -> {
+//            VBox vBox = (VBox) titledPane.getContent();
+//            for (Node node : vBox.getChildren()) {
+//                if (node instanceof Button) {
+//                    Button button = (Button) node;
+//                    button.setOnAction(event -> {
+//                        String question = button.getText();
+//                        if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+//                            model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
+//                            System.out.println(model.getSpeler2().getTeRadenPersoon().extra);
+//                            System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+//                        } else {
+//                            model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+//                            System.out.println(model.getSpeler1().getTeRadenPersoon().extra);
+//                            view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+//                            System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+//                        }
+//                    });
+//                }
+//            }
+//        });
+        view.getKeuzesAccordion().getPanes().forEach(titledPane -> {
+            VBox vBox = (VBox) titledPane.getContent();
+            vBox.getChildren().forEach(node -> {
+                Button button = (Button) node;
+                button.setOnAction(event -> {
+                    String question = button.getText();
+                    if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                        model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
+                        System.out.println(model.getSpeler2().getTeRadenPersoon().extra);
+                        System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+                    } else {
+                        model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+                        System.out.println(model.getSpeler1().getTeRadenPersoon().extra);
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+                    }
+                });
+            });
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        view.getGeslacht().getChildrenUnmodifiable().forEach(node -> {
+//            int characterIndex = Integer.parseInt(node.getId());
+//                            String vraagGeslacht = view.getBtnGeslacht()[Integer.parseInt(node.getId())].getText();
+//                            System.out.println(vraagGeslacht);
+//                            if(  model.getHuidigeSpeler().equals(model.getSpeler1())){
+//                                model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagGeslacht);
+//                                System.out.println(model.getSpeler2().getTeRadenPersoon().extra);
+//
+//                                System.out.println("Uw antwoord is "+model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagGeslacht));
+//
+//                            } else {
+//                                model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht);
+//                                System.out.println(model.getSpeler1().getTeRadenPersoon().extra);
+//                                view.getLblAntwoordVraag().setText( Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht)));
+//                                System.out.println("Uw antwoord is" +model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht));
+//                            }
+//        });
+//        view.getKeuzesAccordion().getPanes().forEach(node -> {
+//            if (node instanceof TitledPane) {
+//                VBox buttonContainer = (VBox) node.getContent();
+//                int i = 0;
+//                for (Node child : buttonContainer.getChildren()) {
+//                    if (child instanceof Button) {
+//                        child.setId(String.valueOf(i));
+//                        ((Button) child).setOnAction(event -> {
+//                            // use the button's id to get the character from the model
+//                            int characterIndex = Integer.parseInt(child.getId());
+//                            String buttonTxt = view.getBtnGeslacht()[characterIndex].getText();
+//
+//                            // get the name of the enum and concatenate it with the button text
+//
+//
+//                            System.out.println(buttonTxt);
+//                            if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+//                                model.getSpeler2().getTeRadenPersoon().isGelijkAan(buttonTxt);
+//                                System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(buttonTxt));
+//                            } else {
+//                                model.getSpeler1().getTeRadenPersoon().isGelijkAan(buttonTxt);
+//                                view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(buttonTxt)));
+//                                System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(buttonTxt));
+//                            }
+//
+//                            //<editor-fold desc="Extra enum">
+//
+//                            //</editor-fold>
+//                            // ...
+//                        });
+//                        i++;
+//                    }
+//                }
+//            }
+//        });
+
+//        view.getKeuzesAccordion().getPanes().forEach(node -> {
+//            if (node instanceof TitledPane) {
+//                TitledPane titledPane = (TitledPane) node;
+//                VBox buttonContainer = (VBox) titledPane.getContent();
+//                int i = 0;
+//                for (Node child : buttonContainer.getChildren()) {
+//                    if (child instanceof Button) {
+//
+//                        ((Button) child).setOnAction(event -> {
+//                            // use the button's id to get the character from the model
+//
+//                            String buttonText = ((Button) child).getText();
+//
+//                            // check if the button belongs to the "geslacht" or "extra" pane
+//                            if (titledPane.getText().equals("Geslacht")) {
+//                                String vraagGeslacht = view.getBtnGeslacht()[new Integer(child.getId())].getText();
+//                                System.out.println(vraagGeslacht);
+//                                // handle geslacht button click
+//                                if(  model.getHuidigeSpeler().equals(model.getSpeler1())){
+//                                    model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagGeslacht);
+//                                    System.out.println(model.getSpeler2().getTeRadenPersoon().extra);
+//
+//                                    System.out.println("Uw antwoord is "+model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagGeslacht));
+//
+//                                } else {
+//                                    model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht);
+//                                    System.out.println(model.getSpeler1().getTeRadenPersoon().extra);
+//                                    view.getLblAntwoordVraag().setText( Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht)));
+//                                    System.out.println("Uw antwoord is" +model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagGeslacht));
+//                                }
+//                            } else if (titledPane.getText().equals("Extra")) {
+//                                String vraagextra = view.getBtnExtra()[new Integer(child.getId())].getText();
+//                                System.out.println(vraagextra);
+//                                // handle extra button click
+//                                if(  model.getHuidigeSpeler().equals(model.getSpeler1())){
+//                                model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagextra);
+//                                System.out.println(model.getSpeler2().getTeRadenPersoon().getExtra());
+//                                System.out.println("Uw vraag is :"+model.getSpeler2().getTeRadenPersoon().isGelijkAan(vraagextra));
+//
+//                            } else {
+//                                model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagextra);
+//                                System.out.println(model.getSpeler1().getTeRadenPersoon().getExtra());
+//                                view.getLblAntwoordVraag().setText( Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagextra)));
+//                                System.out.println("Uw vraag is :"+model.getSpeler1().getTeRadenPersoon().isGelijkAan(vraagextra));
+//                            }
+//                            } else {
+//                                // handle other titled panes
+//                                // ...
+//                            }
+//
+//                        });
+//                    }
+//                }
+//            }
+//        });
+
+
+
 
 
 //        view.getKeuzesAccordion().getPanes().forEach(node -> {
@@ -78,7 +229,7 @@ public class SpelbordPresenter {
 //                }
 //            }
 //        });
-
+//
 //        view.getKeuzesAccordion().getPanes().forEach(node -> {
 //            if (node instanceof TitledPane) {
 //                VBox buttonContainer = (VBox) node.getContent();

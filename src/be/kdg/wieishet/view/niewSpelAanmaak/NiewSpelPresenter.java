@@ -82,6 +82,8 @@ public class NiewSpelPresenter {
         });
 
         view.getSwitchToPlayer2Button().setOnAction(event -> {
+
+            view.getPlayerNameField().clear();
             if (model.getHuidigeSpeler().equals(model.getSpeler1())){
                 model.setHuidigeSpeler(model.getSpeler2());
             } else {

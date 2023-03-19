@@ -47,7 +47,7 @@ public class WieishetModel {
 
         }
         catch(IOException e){System.out.println(e.getMessage());}
-        System.out.println(characters[1].Naam);
+
         speler1 = new Speler();
         speler2 = new Speler();
 
@@ -61,7 +61,7 @@ public class WieishetModel {
         return null;
     }
     public Persoon getCharacter(int id){
-            System.out.println("IngetKarakter +" +id);
+            System.out.println("In getKarakter +" +id);
             System.out.println(characters.length);
                 return characters[id];
 

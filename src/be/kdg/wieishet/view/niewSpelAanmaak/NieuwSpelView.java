@@ -43,7 +43,7 @@ public class NieuwSpelView extends VBox {
         playerNameLabel = new Label("Enter player name:");
         playerNameField = new TextField();
         startButton = new Button("Start Game");
-        switchToPlayer2Button = new Button("Switch to Player 2");
+        switchToPlayer2Button = new Button(" wissel naar de volgende speler");
         btnBack = new Button("Terug naar het hoofdmenu");
 
         // Create a grid of selectable characters
@@ -51,7 +51,7 @@ public class NieuwSpelView extends VBox {
         characterGrid.setPadding(new Insets(10, 10, 10, 10));
         characterGrid.setHgap(10);
         characterGrid.setVgap(10);
-        setNaam = new Button("Bewaar Naam");
+        setNaam = new Button("Bevestig");
 
         // Add some sample characters to the grid
 
@@ -79,7 +79,7 @@ public class NieuwSpelView extends VBox {
 
 //        characterGrid.setStyle("-fx-background-color: red;");
         characterGrid.setAlignment(Pos.CENTER);
-        this.getChildren().addAll(playerNameLabel, playerNameField, startButton,setNaam, characterGrid,switchToPlayer2Button,btnBack);
+        this.getChildren().addAll(playerNameLabel, playerNameField, startButton, characterGrid,switchToPlayer2Button,setNaam,btnBack);
         this.setSpacing(10);
         this.setPadding(new Insets(10, 10, 10, 10));
         this.setBackground(new Background(new BackgroundImage(new Image("/achtergrond.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
@@ -88,6 +88,7 @@ public class NieuwSpelView extends VBox {
         startButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
         switchToPlayer2Button.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
         btnBack.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
+        setNaam.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
         switchToPlayer2Button.setAlignment(Pos.BOTTOM_RIGHT);
         characterGrid.setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
     }
