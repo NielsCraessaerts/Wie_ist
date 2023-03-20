@@ -3,11 +3,9 @@ import be.kdg.wieishet.Model.Enums.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.util.HashMap;
-
 public class Persoon  {
     public Geslacht geslacht;
-    public Kleur kleur;
+    public Haarkleur haarkleur;
     public Haar haar;
     public Gezichtsbeharing gezichtsbeharing;
     public Extra extra;
@@ -18,9 +16,9 @@ public class Persoon  {
 
 
 
-    public Persoon(String Naam, Geslacht geslacht, Kleur kleur, Haar haar, Gezichtsbeharing gezichtsbeharing, Extra extra, int karakterid) {
+    public Persoon(String Naam, Geslacht geslacht, Haarkleur haarkleur, Haar haar, Gezichtsbeharing gezichtsbeharing, Extra extra, int karakterid) {
         this.geslacht = geslacht;
-        this.kleur = kleur;
+        this.haarkleur = haarkleur;
         this.haar = haar;
         this.gezichtsbeharing = gezichtsbeharing;
         this.extra = extra;
@@ -37,7 +35,7 @@ public class Persoon  {
 
         this.Naam = config2[0];
         this.geslacht = Geslacht.valueOf(config2[1]);
-        this.kleur = Kleur.valueOf(config2[2]);
+        this.haarkleur = Haarkleur.valueOf(config2[2]);
         this.haar = Haar.valueOf(config2[3]);
         this.gezichtsbeharing = Gezichtsbeharing.valueOf(config2[4]);
         this.extra = Extra.valueOf(config2[5]);
@@ -64,8 +62,8 @@ public class Persoon  {
         return geslacht;
     }
 
-    public Kleur getKleur() {
-        return kleur;
+    public Haarkleur getKleur() {
+        return haarkleur;
     }
 
     public Haar getHaar() {
@@ -92,15 +90,15 @@ public class Persoon  {
 
     public boolean isGelijkAan(String question) {
         // Gebruik de vraag van de speler om te bepalen of het karakter aan de eigenschap voldoet
-        if (question.contains("man") || question.contains("vrouw")) {
+        if (question.contains("mannelijk") || question.contains("vrouwelijk")|| question.contains("bloempot")|| question.contains("noglevend")) {
             return geslacht.isGelijkAan(question);
-        } else if (question.contains("bruin") || question.contains("kaal") || question.contains("rood")|| question.contains("blauw") || question.contains("groen") || question.contains("blond") || question.contains("zwart")) {
-            return kleur.isGelijkAan(question);
-        } else if (question.equals("Bril") || question.equals("Hoed") || question.equals("Oorbel") || question.equals("Ketting") || question.equals("Niets") ) {
-            return true;
-        } else if (question.contains("bril") || question.contains("pet") || question.contains("oorbel") || question.contains("ketting") || question.contains("geen")  || question.contains("hoed")) {
+        } else if (question.contains("blond") || question.contains("zwart") || question.contains("grijs")|| question.contains("ros") || question.contains("bruin") ) {
+            return haarkleur.isGelijkAan(question);
+        } else if (question.equals("rimpels") || question.equals("sproeten") || question.equals("makeup") || question.equals("bril") || question.equals("niets") ) {
+            return extra.isGelijkAan(question);
+        } else if (question.contains("kaal") || question.contains("lang") || question.contains("kort") ) {
             return haar.isGelijkAan(question);
-        } else if (question.contains("kort") || question.contains("lang") || question.contains("kaal") || question.contains("middelang")){
+        } else if (question.contains("niets") || question.contains("baard") || question.contains("snor") ){
             return gezichtsbeharing.isGelijkAan(question);
         }
         return false;
@@ -111,7 +109,7 @@ public class Persoon  {
     public String toString() {
         return "Persoon{" +
                 "geslacht=" + geslacht +
-                ", kleur=" + kleur +
+                ", haarkleur=" + haarkleur +
                 ", haar=" + haar +
                 ", gezichtsbeharing=" + gezichtsbeharing +
                 ", extra=" + extra +

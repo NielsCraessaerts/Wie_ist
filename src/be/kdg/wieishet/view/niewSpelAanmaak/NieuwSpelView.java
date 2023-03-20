@@ -31,6 +31,7 @@ public class NieuwSpelView extends VBox {
     private int selectedButtonID;
     private int b;
     private Button setNaam;
+    private HBox BottomButtons;
 
 
     public NieuwSpelView() {
@@ -39,6 +40,7 @@ public class NieuwSpelView extends VBox {
     }
 
     private void initialiseNodes() {
+        BottomButtons = new HBox();
         // Initialisatie van de Nodes
         playerNameLabel = new Label("Enter player name:");
         playerNameField = new TextField();
@@ -79,16 +81,17 @@ public class NieuwSpelView extends VBox {
 
 //        characterGrid.setStyle("-fx-background-color: red;");
         characterGrid.setAlignment(Pos.CENTER);
-        this.getChildren().addAll(playerNameLabel, playerNameField, startButton, characterGrid,switchToPlayer2Button,setNaam,btnBack);
+        BottomButtons.getChildren().addAll(switchToPlayer2Button,setNaam,btnBack);
+        this.getChildren().addAll(playerNameLabel, playerNameField, startButton, characterGrid,BottomButtons);
         this.setSpacing(10);
         this.setPadding(new Insets(10, 10, 10, 10));
         this.setBackground(new Background(new BackgroundImage(new Image("/achtergrond.png"), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         this.setPrefSize(800,800);
         playerNameLabel.setStyle("-fx-font-family: Arial; -fx-font-size: 20px; -fx-text-fill: white;-fx-font-weight: bold");
         startButton.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
-        switchToPlayer2Button.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
-        btnBack.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
-        setNaam.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
+        switchToPlayer2Button.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;-fx-border-color: white");
+        btnBack.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;-fx-border-color: white");
+        setNaam.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;-fx-border-color: white");
         switchToPlayer2Button.setAlignment(Pos.BOTTOM_RIGHT);
         characterGrid.setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
     }

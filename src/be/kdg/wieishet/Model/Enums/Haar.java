@@ -1,7 +1,7 @@
 package be.kdg.wieishet.Model.Enums;
 
 public enum Haar {
-    Kaal, Lang, Kort, Corny;
+    kaal, lang, kort;
 
     public boolean isGelijkAan(String question) {
         return question.contains(name().toLowerCase());

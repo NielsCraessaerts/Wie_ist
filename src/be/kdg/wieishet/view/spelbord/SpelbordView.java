@@ -2,6 +2,7 @@ package be.kdg.wieishet.view.spelbord;
 
 
 import be.kdg.wieishet.Model.Enums.*;
+import be.kdg.wieishet.Model.Enums.Haarkleur;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -11,12 +12,12 @@ import javafx.scene.layout.*;
 public class SpelbordView extends VBox {
 private GridPane SpelbordGrid;
 private Accordion KeuzesAccordion;
-private VBox buttonContainterGeslacht;
+private HBox buttonContainterGeslacht;
 private Button btnVraag;
 private TitledPane geslacht;
 private TitledPane gezichtsbeharing;
 private TitledPane haar;
-private TitledPane kleur;
+private TitledPane haarkleur;
 private TitledPane extra;
 private ToggleButton[] characterButtons;
 private     String zoekterm ;
@@ -25,14 +26,25 @@ private HBox accordionenvraag;
 private Button[] btnGeslacht;
 private Button[] btnGezichtsbeharing;
 private Button[] btnHaar;
-private Button[] btnKleur;
+private Button[] btnHaarkleur;
 private Button[] btnExtra;
+private HBox buttonContainerExtra;
+private HBox buttonContainerGeslacht;
+private HBox buttonContainerGezichtsbeharing;
+private HBox buttonContainerHaar;
+private HBox buttonContainerHaarkleur;
+private HBox BottomButtons;
+private Label HetisDeBeurtAan;
+private String Spelersnaam;
 
 public SpelbordView() {
     this.initialiseNodes();
     this.layoutNodes();
 }
     private void initialiseNodes() {
+    Spelersnaam = " ";
+    HetisDeBeurtAan = new Label("Het is nu de beurt aan" + Spelersnaam);
+    BottomButtons = new HBox();
     SpelbordGrid = new GridPane();
     characterButtons = new ToggleButton[24];
         for (int i = 0; i < 24; i++) {
@@ -54,92 +66,80 @@ public SpelbordView() {
 
 
         KeuzesAccordion = new Accordion();
-        VBox buttonContainerGeslacht = new VBox();
+        buttonContainerGeslacht = new HBox();
         buttonContainerGeslacht.setAlignment(Pos.CENTER);
 
         this.btnGeslacht = new Button[Geslacht.values().length];
-        for (int i=0;i< Geslacht.values().length;i++) {
-            int b = i;
-            System.out.println(Geslacht.values()[i].name());
-
-            this.btnGeslacht[b] = new Button(Geslacht.values()[i].name());
-            buttonContainerGeslacht.getChildren().add(this.btnGeslacht[b]);
+        for (int i = 0; i < Geslacht.values().length; i++) {
+            this.btnGeslacht[i] = new Button(Geslacht.values()[i].name());
+            this.btnGeslacht[i].setId(Integer.toString(i));
+            buttonContainerGeslacht.getChildren().add(this.btnGeslacht[i]);
         }
 
 
 
-        VBox buttonContainerGezichtsbeharing = new VBox();
+        buttonContainerGezichtsbeharing = new HBox();
         buttonContainerGezichtsbeharing.setAlignment(Pos.CENTER);
 
         this.btnGezichtsbeharing = new Button[Gezichtsbeharing.values().length];
         for (int i = 0; i < Gezichtsbeharing.values().length; i++) {
-            int b = i;
-            System.out.println(Gezichtsbeharing.values()[i].name());
-
-            this.btnGezichtsbeharing[b] = new Button(Gezichtsbeharing.values()[i].name());
-            buttonContainerGezichtsbeharing.getChildren().add(this.btnGezichtsbeharing[b]);
+            this.btnGezichtsbeharing[i] = new Button(Gezichtsbeharing.values()[i].name());
+            this.btnGezichtsbeharing[i].setId(Integer.toString(i));
+            buttonContainerGezichtsbeharing.getChildren().add(this.btnGezichtsbeharing[i]);
         }
 
 
 
 // Haar
-        VBox buttonContainerHaar = new VBox();
+        buttonContainerHaar = new HBox();
         buttonContainerHaar.setAlignment(Pos.CENTER);
 
         this.btnHaar = new Button[Haar.values().length];
         for (int i = 0; i < Haar.values().length; i++) {
-            int b = i;
-            System.out.println(Haar.values()[i].name());
-
             this.btnHaar[i] = new Button(Haar.values()[i].name());
-            buttonContainerHaar.getChildren().addAll(this.btnHaar[i]);
+            this.btnHaar[i].setId(Integer.toString(i));
+            buttonContainerHaar.getChildren().add(this.btnHaar[i]);
         }
 
 
 
-// Kleur
-        VBox buttonContainerKleur = new VBox();
-        buttonContainerKleur.setAlignment(Pos.CENTER);
+// HaarHaarkleur
+        buttonContainerHaarkleur = new HBox();
+        buttonContainerHaarkleur.setAlignment(Pos.CENTER);
 
-        this.btnKleur = new Button[Kleur.values().length];
-        for (int i = 0; i < Kleur.values().length; i++) {
-            int b = i;
-            System.out.println(Kleur.values()[i].name());
-
-            this.btnKleur[i] = new Button(Kleur.values()[i].name());
-            buttonContainerKleur.getChildren().addAll(this.btnKleur[i]);
+        this.btnHaarkleur = new Button[Haarkleur.values().length];
+        for (int i = 0; i < Haarkleur.values().length; i++) {
+            this.btnHaarkleur[i] = new Button(Haarkleur.values()[i].name());
+            this.btnHaarkleur[i].setId(Integer.toString(i));
+            buttonContainerHaarkleur.getChildren().add(this.btnHaarkleur[i]);
         }
 
 
 
 // Extra
-        VBox buttonContainerExtra = new VBox();
+        buttonContainerExtra = new HBox();
         buttonContainerExtra.setAlignment(Pos.CENTER);
 
         this.btnExtra = new Button[Extra.values().length];
         for (int i = 0; i < Extra.values().length; i++) {
-            int b = i;
-            System.out.println(Extra.values()[i].name());
-
             this.btnExtra[i] = new Button(Extra.values()[i].name());
-            buttonContainerExtra.getChildren().addAll(this.btnExtra[i]);
+            this.btnExtra[i].setId(Integer.toString(i));
+            buttonContainerExtra.getChildren().add(this.btnExtra[i]);
         }
-
 
 
         haar = new TitledPane("Haar:", buttonContainerHaar);
         extra = new TitledPane("Extra:", buttonContainerExtra);
          geslacht = new TitledPane("Het geslacht : ", buttonContainerGeslacht);
         gezichtsbeharing = new TitledPane("Gezichtsbeharing:", buttonContainerGezichtsbeharing);
-        kleur = new TitledPane("Kleur:", buttonContainerKleur);
-        KeuzesAccordion.getPanes().addAll(geslacht, gezichtsbeharing, haar, kleur, extra);
+        haarkleur = new TitledPane("Haarkleur:", buttonContainerHaarkleur);
+        KeuzesAccordion.getPanes().addAll(geslacht, gezichtsbeharing, haar, haarkleur, extra);
 
 
 
 
-        accordionenvraag = new HBox();
-        accordionenvraag.setAlignment(Pos.BOTTOM_CENTER);
-        accordionenvraag.getChildren().addAll(KeuzesAccordion,lblAntwoordVraag);
+
+
 
 
 
@@ -153,22 +153,49 @@ public SpelbordView() {
 
         KeuzesAccordion.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;");
         KeuzesAccordion.setPrefWidth(300);
+        SpelbordGrid.setHgap(15);
+        this.getChildren().add(HetisDeBeurtAan);
         this.getChildren().add(SpelbordGrid);
-        this.getChildren().add(accordionenvraag);
-        geslacht.getContent().setStyle("-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        haar.getContent().setStyle("-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        kleur.getContent().setStyle("-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        gezichtsbeharing.getContent().setStyle("-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        extra.getContent().setStyle("-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        this.getChildren().add(KeuzesAccordion);
+        this.getChildren().add(lblAntwoordVraag);
+        HetisDeBeurtAan.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
+
+lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx-border-width: 2px; -fx-font-size: 12pt;");
+
+        geslacht.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        haar.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        haarkleur.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        gezichtsbeharing.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        extra.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
         this.setPrefSize(800,800);
-
-
+        HetisDeBeurtAan.setPrefWidth(this.getPrefWidth());
+        lblAntwoordVraag.setPrefWidth(this.getPrefWidth());
 
         }
 // Layout van de Nodes
 // add… methodes (of set…)
 // Insets, padding, alignment, …
 
+
+    public void setHetisDeBeurtAan(Label hetisDeBeurtAan) {
+        HetisDeBeurtAan = hetisDeBeurtAan;
+    }
+
+    public void setSpelersnaam(String spelersnaam) {
+        Spelersnaam = spelersnaam;
+    }
+
+    public Button[] getBtnGeslacht() {
+        return btnGeslacht;
+    }
+
+    public Label getHetisDeBeurtAan() {
+        return HetisDeBeurtAan;
+    }
+
+    public String getSpelersnaam() {
+        return Spelersnaam;
+    }
 
     public TitledPane getGezichtsbeharing() {
         return gezichtsbeharing;
@@ -178,8 +205,8 @@ public SpelbordView() {
         return haar;
     }
 
-    public TitledPane getKleur() {
-        return kleur;
+    public TitledPane getHaarkleur() {
+        return haarkleur;
     }
 
     public TitledPane getExtra() {
@@ -190,24 +217,24 @@ public SpelbordView() {
         return accordionenvraag;
     }
 
-    public Button[] getBtnGeslacht() {
-        return btnGeslacht;
+    public Button getBtnGeslacht(int id) {
+        return btnGeslacht[id];
     }
 
-    public Button[] getBtnGezichtsbeharing() {
-        return btnGezichtsbeharing;
+    public Button getBtnGezichtsbeharing(int id) {
+        return btnGezichtsbeharing[id];
     }
 
-    public Button[] getBtnHaar() {
-        return btnHaar;
+    public Button getBtnHaar(int id) {
+        return btnHaar[id];
     }
 
-    public Button[] getBtnKleur() {
-        return btnKleur;
+    public Button getBtnHaarkleur(int id) {
+        return btnHaarkleur[id];
     }
 
-    public Button[] getBtnExtra() {
-        return btnExtra;
+    public Button getBtnExtra(int id) {
+        return btnExtra[id];
     }
 
     public GridPane getSpelbordGrid() {
@@ -226,11 +253,11 @@ public SpelbordView() {
         KeuzesAccordion = keuzesAccordion;
     }
 
-    public VBox getButtonContainterGeslacht() {
+    public HBox getButtonContainterGeslacht() {
         return buttonContainterGeslacht;
     }
 
-    public void setButtonContainterGeslacht(VBox buttonContainterGeslacht) {
+    public void setButtonContainterGeslacht(HBox buttonContainterGeslacht) {
         this.buttonContainterGeslacht = buttonContainterGeslacht;
     }
 
@@ -274,4 +301,23 @@ public SpelbordView() {
         this.lblAntwoordVraag = lblAntwoordVraag;
     }
 
+    public HBox getButtonContainerExtra() {
+        return buttonContainerExtra;
+    }
+
+    public HBox getButtonContainerGeslacht() {
+        return buttonContainerGeslacht;
+    }
+
+    public HBox getButtonContainerGezichtsbeharing() {
+        return buttonContainerGezichtsbeharing;
+    }
+
+    public HBox getButtonContainerHaar() {
+        return buttonContainerHaar;
+    }
+
+    public HBox getButtonContainerHaarkleur() {
+        return buttonContainerHaarkleur;
+    }
 }

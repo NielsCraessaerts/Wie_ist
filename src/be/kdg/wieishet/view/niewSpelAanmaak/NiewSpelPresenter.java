@@ -65,7 +65,7 @@ public class NiewSpelPresenter {
             model.getSpeler2().setSpelerskleur(Spelerskleur.Rood);
             model.getSpeler1().setAantalBeurten(0);
             model.getSpeler2().setAantalBeurten(0);
-
+            model.setHuidigeSpeler(model.getSpeler1());
 
 
                 SpelbordView SpelbordView = new SpelbordView();
@@ -78,7 +78,7 @@ public class NiewSpelPresenter {
 
             // Do something with the player name
             // ...
-            System.out.println(model.getSpeler1().getSpelersnaam());
+
         });
 
         view.getSwitchToPlayer2Button().setOnAction(event -> {
@@ -86,8 +86,10 @@ public class NiewSpelPresenter {
             view.getPlayerNameField().clear();
             if (model.getHuidigeSpeler().equals(model.getSpeler1())){
                 model.setHuidigeSpeler(model.getSpeler2());
+                view.getCharacterGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
             } else {
                 model.setHuidigeSpeler( model.getSpeler1());
+                view.getCharacterGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
             }
         });
 
@@ -98,11 +100,14 @@ public class NiewSpelPresenter {
                 System.out.println("start if");
                 ((ToggleButton) node).setOnAction(event -> {
                     System.out.println("start getKarakter");
-                    model.getSpeler1().setTeRadenPersoon(model.getCharacter(new Integer(node.getId())));
-                    System.out.println(model.getCharacter(node.getId()));
-                    System.out.println(model.getSpeler1().getTeRadenPersoon());
-                    System.out.println(node.getId());
 
+
+
+                    if (model.getHuidigeSpeler().equals(model.getSpeler1())){
+                        model.getSpeler1().setTeRadenPersoon(model.getCharacter(new Integer(node.getId())));
+                    } else {
+                        model.getSpeler2().setTeRadenPersoon(model.getCharacter(new Integer(node.getId())));
+                    }
 
                     // ...
                 });

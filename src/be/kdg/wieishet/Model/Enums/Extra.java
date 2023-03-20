@@ -2,11 +2,11 @@ package be.kdg.wieishet.Model.Enums;
 
 
 public enum Extra {
-    Bril,
-    Hoed,
-    Ketting,
-    Oorbel,
-    Niets;
+    rimpels,
+    sproeten,
+    makeup,
+    bril,
+    niets;
 
     public boolean isGelijkAan(String question) {
         return question.contains(name().toLowerCase());

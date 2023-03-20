@@ -26,6 +26,17 @@ public class SpelbordPresenter {
     }
     private void addEventHandlers(){
 
+
+        if (model.getHuidigeSpeler().equals(model.getSpeler1())){
+            view.getSpelbordGrid().setStyle("-fx-background-color: red");
+            view.setSpelersnaam(model.getSpeler1().getSpelersnaam());
+        } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
+            view.getSpelbordGrid().setStyle("-fx-background-color: blue");
+            view.setSpelersnaam(model.getSpeler2().getSpelersnaam());
+        }
+
+
+
 //        view.getKeuzesAccordion().getPanes().forEach(titledPane -> {
 //            VBox vBox = (VBox) titledPane.getContent();
 //            for (Node node : vBox.getChildren()) {
@@ -47,25 +58,139 @@ public class SpelbordPresenter {
 //                }
 //            }
 //        });
-        view.getKeuzesAccordion().getPanes().forEach(titledPane -> {
-            VBox vBox = (VBox) titledPane.getContent();
-            vBox.getChildren().forEach(node -> {
-                Button button = (Button) node;
-                button.setOnAction(event -> {
-                    String question = button.getText();
+//        view.getKeuzesAccordion().getPanes().forEach(titledPane -> {
+//            VBox vBox = (VBox) titledPane.getContent();
+//            vBox.getChildren().forEach(node -> {
+//                Button button = (Button) node;
+//                button.setOnAction(event -> {
+//                    String question = button.getText();
+//                    if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+//                        model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
+//                        System.out.println(model.getSpeler2().getTeRadenPersoon().extra);
+//                        System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+//                    } else {
+//                        model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+//                        System.out.println(model.getSpeler1().getTeRadenPersoon().extra);
+//                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+//                        System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+//                    }
+//                });
+//            });
+//        });
+        view.getButtonContainerGeslacht().getChildren().forEach(node -> {
+            if (node instanceof Button){
+                ((Button) node).setOnAction(event -> {
+                    String question = view.getBtnGeslacht(new Integer(node.getId())).getText();
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
-                        System.out.println(model.getSpeler2().getTeRadenPersoon().extra);
+                        System.out.println(question);
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
                         System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
-                    } else {
+                        model.setHuidigeSpeler(model.getSpeler2());
+
+                    } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
-                        System.out.println(model.getSpeler1().getTeRadenPersoon().extra);
+                        System.out.println(question);
                         view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
                         System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler1());
+
                     }
                 });
-            });
+            }
         });
+
+        view.getButtonContainerExtra().getChildren().forEach(node -> {
+            if (node instanceof Button){
+                ((Button) node).setOnAction(event -> {
+                    String question = view.getBtnExtra(new Integer(node.getId())).getText();
+                    if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                        model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
+                        System.out.println(question);
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler2());
+
+                    } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
+                        model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+                        System.out.println(question);
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler1());
+
+                    }
+                });
+            }
+        });
+
+        view.getButtonContainerGezichtsbeharing().getChildren().forEach(node -> {
+            if (node instanceof Button){
+                ((Button) node).setOnAction(event -> {
+                    String question = view.getBtnGezichtsbeharing(new Integer(node.getId())).getText();
+                    if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                        model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
+
+                        System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler2());
+                    } else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
+                        model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler1());
+                    }
+                });
+            }
+        });
+        view.getButtonContainerHaar().getChildren().forEach(node -> {
+            if (node instanceof Button){
+                ((Button) node).setOnAction(event -> {
+                    String question = view.getBtnHaar(new Integer(node.getId())).getText();
+                    if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                        model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
+
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler2());
+
+                    } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
+                        model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler1());
+
+                    }
+                });
+            }
+        });
+
+        view.getButtonContainerHaarkleur().getChildren().forEach(node -> {
+            if (node instanceof Button){
+                ((Button) node).setOnAction(event -> {
+                    String question = view.getBtnHaarkleur(new Integer(node.getId())).getText();
+                    if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                        model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
+
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler2());
+
+                    } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
+                        model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+
+                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+                        System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+                        model.setHuidigeSpeler(model.getSpeler1());
+
+                    }
+                });
+            }
+        });
+
+
+
 
 
 
