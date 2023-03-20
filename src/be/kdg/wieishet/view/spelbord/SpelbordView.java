@@ -35,15 +35,16 @@ private HBox buttonContainerHaar;
 private HBox buttonContainerHaarkleur;
 private HBox BottomButtons;
 private Label HetisDeBeurtAan;
-private String Spelersnaam;
+private String Playername;
+private Button Spelerwisselen;
 
 public SpelbordView() {
     this.initialiseNodes();
     this.layoutNodes();
 }
     private void initialiseNodes() {
-    Spelersnaam = " ";
-    HetisDeBeurtAan = new Label("Het is nu de beurt aan" + Spelersnaam);
+    Playername = getPlayername();
+    HetisDeBeurtAan = new Label("Het is nu de beurt aan " + Playername);
     BottomButtons = new HBox();
     SpelbordGrid = new GridPane();
     characterButtons = new ToggleButton[24];
@@ -52,10 +53,11 @@ public SpelbordView() {
            ToggleButton characterButton = new ToggleButton();
            characterButtons[i] = characterButton;
 
-
+            characterButton.setId(Integer.toString(i));
             SpelbordGrid.add(characterButton, i % 6, i / 6);
         }
     lblAntwoordVraag = new Label("YES/NO");
+        Spelerwisselen = new Button("Mijn beurt is gedaan");
 
 
 
@@ -151,25 +153,27 @@ public SpelbordView() {
         }
     private void layoutNodes() {
 
-        KeuzesAccordion.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;");
+        KeuzesAccordion.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px;");
         KeuzesAccordion.setPrefWidth(300);
         SpelbordGrid.setHgap(15);
         this.getChildren().add(HetisDeBeurtAan);
         this.getChildren().add(SpelbordGrid);
         this.getChildren().add(KeuzesAccordion);
         this.getChildren().add(lblAntwoordVraag);
+        this.getChildren().add(Spelerwisselen);
         HetisDeBeurtAan.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
 
 lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx-border-width: 2px; -fx-font-size: 12pt;");
 
-        geslacht.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        haar.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        haarkleur.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        gezichtsbeharing.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        extra.getContent().setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        geslacht.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+
+        haar.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        haarkleur.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        gezichtsbeharing.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        extra.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
         this.setPrefSize(800,800);
-        HetisDeBeurtAan.setPrefWidth(this.getPrefWidth());
-        lblAntwoordVraag.setPrefWidth(this.getPrefWidth());
+        HetisDeBeurtAan.setPrefWidth(950);
+        lblAntwoordVraag.setPrefWidth(950);
 
         }
 // Layout van de Nodes
@@ -177,12 +181,16 @@ lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx
 // Insets, padding, alignment, …
 
 
+    public Button getSpelerwisselen() {
+        return Spelerwisselen;
+    }
+
     public void setHetisDeBeurtAan(Label hetisDeBeurtAan) {
         HetisDeBeurtAan = hetisDeBeurtAan;
     }
 
-    public void setSpelersnaam(String spelersnaam) {
-        Spelersnaam = spelersnaam;
+    public void setPlayername(String spelersnaam) {
+        Playername = spelersnaam;
     }
 
     public Button[] getBtnGeslacht() {
@@ -193,8 +201,8 @@ lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx
         return HetisDeBeurtAan;
     }
 
-    public String getSpelersnaam() {
-        return Spelersnaam;
+    public String getPlayername() {
+        return Playername;
     }
 
     public TitledPane getGezichtsbeharing() {

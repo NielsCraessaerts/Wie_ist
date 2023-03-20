@@ -13,6 +13,7 @@ public class Persoon  {
     public  int karakterid;
     private String config;
     private  ImageView karakter;
+    private ImageView karakterelim;
 
 
 
@@ -41,6 +42,7 @@ public class Persoon  {
         this.extra = Extra.valueOf(config2[5]);
         this.karakterid = Integer.parseInt(config2[6]);
         this.karakter = new ImageView("/characters/character" + karakterid + ".png");
+        this.karakterelim = new ImageView("/Elim-character/characterelim" + karakterid +".png");
 
 
     }
@@ -82,11 +84,13 @@ public class Persoon  {
         return Naam;
     }
 
+    public Haarkleur getHaarkleur() {
+        return haarkleur;
+    }
 
-
-
-
-
+    public ImageView getKarakterelim() {
+        return karakterelim;
+    }
 
     public boolean isGelijkAan(String question) {
         // Gebruik de vraag van de speler om te bepalen of het karakter aan de eigenschap voldoet

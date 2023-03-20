@@ -1,19 +1,13 @@
 package be.kdg.wieishet.Model;
 
 import be.kdg.wieishet.Model.Enums.*;
-import be.kdg.wieishet.Model.*;
-import be.kdg.wieishet.Model.WieishetModel;
 
 
 public class Klep {
-    //<editor-fold desc="Personen">
-//    Persoon Janine = new Persoon("Janine", Geslacht.Vrouwelijk, Haarkleur.Blond, Haar.Lang, Gezichtsbeharing.Niets, Extra.Hoed,1);
-//    Persoon Frans = new Persoon("Frans", Geslacht.Mannelijk, Haarkleur.Blond, Haar.Kort, Gezichtsbeharing.Niets, Extra.Niets,2);
-//    Persoon Fries = new Persoon("Fries", Geslacht.Noglevend, Haarkleur.Blond, Haar.Kort, Gezichtsbeharing.Baard, Extra.Hoed,3);
-//    Persoon Anne = new Persoon("Annel", Geslacht.Vrouwelijk, Haarkleur.Bruin, Haar.Lang, Gezichtsbeharing.Niets, Extra.Oorbel,4);
-    //</editor-fold>
 
-    public Toestand toestand;
+
+    private String toestand;
+    private Persoon karakter;
 
 
 
@@ -22,14 +16,29 @@ public class Klep {
 };
 
 
-    public Klep(Toestand toestand, Persoon[] characters) {
+    public Klep(String toestand, Persoon karakter) {
         this.toestand = toestand;
+        this.karakter = karakter;
 
     }
 
-    public Toestand getToestand() {
+    public Klep(Persoon karakter) {
+        this.karakter = karakter;
+    }
+
+    public String getToestand() {
         return toestand;
     }
 
+    public void setToestand(String toestand) {
+        this.toestand = toestand;
+    }
 
+    public Persoon getKarakter() {
+        return karakter;
+    }
+
+    public void setKarakter(Persoon karakter) {
+        this.karakter = karakter;
+    }
 }

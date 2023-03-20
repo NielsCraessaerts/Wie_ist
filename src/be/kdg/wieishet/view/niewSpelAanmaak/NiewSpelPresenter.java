@@ -55,6 +55,7 @@ public class NiewSpelPresenter {
         });
         view.getSetNaam().setOnAction(event -> {
                     model.getHuidigeSpeler().setSpelersnaam( view.getPlayerNameField().getText());
+                    model.getHuidigeSpeler().setSpelbord(new Spelbord());
                 });
 
         view.getStartButton().setOnAction(event -> {

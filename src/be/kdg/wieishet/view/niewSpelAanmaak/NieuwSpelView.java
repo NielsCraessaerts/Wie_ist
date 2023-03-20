@@ -81,7 +81,7 @@ public class NieuwSpelView extends VBox {
 
 //        characterGrid.setStyle("-fx-background-color: red;");
         characterGrid.setAlignment(Pos.CENTER);
-        BottomButtons.getChildren().addAll(switchToPlayer2Button,setNaam,btnBack);
+        BottomButtons.getChildren().addAll(setNaam,switchToPlayer2Button,btnBack);
         this.getChildren().addAll(playerNameLabel, playerNameField, startButton, characterGrid,BottomButtons);
         this.setSpacing(10);
         this.setPadding(new Insets(10, 10, 10, 10));
