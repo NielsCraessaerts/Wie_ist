@@ -37,12 +37,20 @@ private HBox BottomButtons;
 private Label HetisDeBeurtAan;
 private String Playername;
 private Button Spelerwisselen;
+private Label lblGokwagen;
+private TextField txtGokwagen;
+private HBox hboxGokwagen;
+private Button btnGokwagen;
 
 public SpelbordView() {
     this.initialiseNodes();
     this.layoutNodes();
 }
     private void initialiseNodes() {
+    btnGokwagen = new Button("Bevestig");
+    hboxGokwagen = new HBox();
+    lblGokwagen = new Label("Het geheime karakter is : ")  ;
+    txtGokwagen = new TextField();
     Playername = getPlayername();
     HetisDeBeurtAan = new Label("Het is nu de beurt aan " + Playername);
     BottomButtons = new HBox();
@@ -56,7 +64,7 @@ public SpelbordView() {
             characterButton.setId(Integer.toString(i));
             SpelbordGrid.add(characterButton, i % 6, i / 6);
         }
-    lblAntwoordVraag = new Label("YES/NO");
+    lblAntwoordVraag = new Label("TRUE/FALSE");
         Spelerwisselen = new Button("Mijn beurt is gedaan");
 
 
@@ -152,19 +160,24 @@ public SpelbordView() {
             characterButtons[index].setGraphic(image);
         }
     private void layoutNodes() {
-
+        btnGokwagen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
+        hboxGokwagen.getChildren().addAll(lblGokwagen,txtGokwagen,btnGokwagen);
         KeuzesAccordion.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px;");
         KeuzesAccordion.setPrefWidth(300);
         SpelbordGrid.setHgap(15);
+        SpelbordGrid.setAlignment(Pos.CENTER);
+        SpelbordGrid.setPrefWidth(800);
         this.getChildren().add(HetisDeBeurtAan);
         this.getChildren().add(SpelbordGrid);
         this.getChildren().add(KeuzesAccordion);
         this.getChildren().add(lblAntwoordVraag);
+        this.getChildren().add(hboxGokwagen);
         this.getChildren().add(Spelerwisselen);
         HetisDeBeurtAan.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
-
-lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx-border-width: 2px; -fx-font-size: 12pt;");
-
+        lblGokwagen.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
+        txtGokwagen.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
+        lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx-border-width: 2px; -fx-font-size: 12pt;");
+        Spelerwisselen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
         geslacht.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
 
         haar.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
@@ -327,5 +340,25 @@ lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx
 
     public HBox getButtonContainerHaarkleur() {
         return buttonContainerHaarkleur;
+    }
+
+    public HBox getBottomButtons() {
+        return BottomButtons;
+    }
+
+    public Label getLblGokwagen() {
+        return lblGokwagen;
+    }
+
+    public TextField getTxtGokwagen() {
+        return txtGokwagen;
+    }
+
+    public HBox getHboxGokwagen() {
+        return hboxGokwagen;
+    }
+
+    public Button getBtnGokwagen() {
+        return btnGokwagen;
     }
 }

@@ -1,11 +1,23 @@
 package be.kdg.wieishet.view.spelbord;
 
+import be.kdg.wieishet.Main;
 import be.kdg.wieishet.Model.Klep;
+import be.kdg.wieishet.view.Welcomescreen.WelcomePresenter;
+import be.kdg.wieishet.view.Welcomescreen.WelcomeView;
+import be.kdg.wieishet.view.niewSpelAanmaak.NieuwSpelView;
+import be.kdg.wieishet.view.niewSpelAanmaak.NiewSpelPresenter;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import be.kdg.wieishet.Model.WieishetModel;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.Optional;
 
 public class SpelbordPresenter {
     private WieishetModel model;
@@ -183,7 +195,80 @@ public class SpelbordPresenter {
             view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
         });
 
+//        view.getBtnGokwagen().setOnAction(new EventHandler<ActionEvent>() {
+//            String gok = view.getTxtGokwagen().getText();
+//            if(model.getHuidigeSpeler().equals(model.getSpeler1())) {
+//                if (gok.equals(model.getSpeler2().getTeRadenPersoon().Naam)){
+//
+//                    public void handle(ActionEvent actionEvent) {
+//                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                        alert.setTitle("Spel stoppen");
+//                        alert.setHeaderText("Bent u zeker dat u het spel wilt beëindigen ?");
+//                        alert.setGraphic(view.getImageView());
+//                        Optional<ButtonType> result = alert.showAndWait();
+//                        if (result.isPresent()&& result.get() == ButtonType.OK){
+//                            System.exit(0);
+//                        }
+//
+//                    }
+//                }
+//            }});
 
+        view.getBtnGokwagen().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String gok = view.getTxtGokwagen().getText().toLowerCase();
+            if(model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                if (gok.equals(model.getSpeler2().getTeRadenPersoon().Naam.toLowerCase())){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Proficiat, " + model.getSpeler1().getSpelersnaam() + ". U bent gewonnen");
+                    alert.setHeaderText("U hebt " + model.getSpeler2().getSpelersnaam() + " verslagen in " + model.getSpeler1().getAantalBeurten() + " Beurten.");
+                    alert.setContentText("Wilt u nog is spelen ?");
+                    alert.setGraphic(model.getSpeler1().getTeRadenPersoon().getKarakter());
+                    Optional<ButtonType> result = alert.showAndWait();
+                        if (result.isPresent()&& result.get() == ButtonType.OK){
+                            NieuwSpelView NieuwSpelView = new NieuwSpelView();
+                            NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model,NieuwSpelView);
+                            Scene Nieuwspel = new Scene(NieuwSpelView);
+                            Main.window.setScene(Nieuwspel);
+                            Main.window.setTitle("Nieuw Spel");
+                            Main.window.show();
+                         }
+                        else if(result.isPresent()&& result.get() == ButtonType.CANCEL){
+                            WelcomeView Welcomeview = new WelcomeView();
+                            WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
+                            Scene Homescreen = new Scene(Welcomeview);
+                            Main.window.setScene(Homescreen);
+                            Main.window.setTitle("Hoofdmenu");
+                            Main.window.show();
+                        }
+
+            }}
+            else if (model.getHuidigeSpeler().equals(model.getSpeler2())){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Proficiat, " + model.getSpeler2().getSpelersnaam() + ". U bent gewonnen");
+                alert.setHeaderText("U hebt " + model.getSpeler1().getSpelersnaam() + " verslagen in " + model.getSpeler2().getAantalBeurten() + " Beurten.");
+                alert.setContentText("Wilt u nog is spelen ?");
+                alert.setGraphic(model.getSpeler1().getTeRadenPersoon().getKarakter());
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent()&& result.get() == ButtonType.OK){
+                    NieuwSpelView NieuwSpelView = new NieuwSpelView();
+                    NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model,NieuwSpelView);
+                    Scene Nieuwspel = new Scene(NieuwSpelView);
+                    Main.window.setScene(Nieuwspel);
+                    Main.window.setTitle("Nieuw Spel");
+                    Main.window.show();
+                }
+                else if(result.isPresent()&& result.get() == ButtonType.CANCEL){
+                    WelcomeView Welcomeview = new WelcomeView();
+                    WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
+                    Scene Homescreen = new Scene(Welcomeview);
+                    Main.window.setScene(Homescreen);
+                    Main.window.setTitle("Hoofdmenu");
+                    Main.window.show();
+                }
+            }}
+        });
 
 
 
