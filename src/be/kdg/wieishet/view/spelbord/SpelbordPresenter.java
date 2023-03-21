@@ -46,9 +46,13 @@ public class SpelbordPresenter {
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
 
+                        if (model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
-                        System.out.println("Uw antwoord is " + model.getSpeler2().getTeRadenPersoon().isGelijkAan(question));
+
 
 
 
@@ -56,8 +60,12 @@ public class SpelbordPresenter {
                     } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
-                        System.out.println("Uw antwoord is " + model.getSpeler1().getTeRadenPersoon().isGelijkAan(question));
+                        if (model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
+
 
 
 
@@ -73,16 +81,24 @@ public class SpelbordPresenter {
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
 
+                        if (model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
 
 
 
 
                     } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+                        if (model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
 
 
                     }
@@ -96,14 +112,22 @@ public class SpelbordPresenter {
                     String question = view.getBtnGezichtsbeharing(new Integer(node.getId())).getText();
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
 
 
 
+                        if (model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
                     } else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
+                        if (model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
 
 
                     }
@@ -117,15 +141,24 @@ public class SpelbordPresenter {
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
 
 
 
+                        if (model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
 
                     } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
+                        if (model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
+
 
 
 
@@ -141,18 +174,25 @@ public class SpelbordPresenter {
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
 
+                        if (model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
 
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)));
 
 
                     } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
-                        ;
 
 
-                        view.getLblAntwoordVraag().setText(Boolean.toString(model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)));
-                        model.setHuidigeSpeler(model.getSpeler1());
+                        if (model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)){
+                            view.getLblAntwoordVraag().setText("Ja");
+                        }else {
+                            view.getLblAntwoordVraag().setText("Nee");
+                        }
+
 
 
                     }
@@ -164,11 +204,16 @@ public class SpelbordPresenter {
         view.getSpelbordGrid().getChildren().forEach(node -> {
             if (node instanceof ToggleButton) {
                 ((ToggleButton) node).setOnAction(event -> {
-                    System.out.println("togglebutton");
+                    if (model.getHuidigeSpeler().getSpelbord().getKlep(new Integer(node.getId()).intValue()).getToestand().equals("Open")){
+
                     model.getHuidigeSpeler().getSpelbord().getKlep(new Integer(node.getId()).intValue()).setToestand("Toe");
-                    System.out.println(node.getId());
-                    System.out.println(new Integer(node.getId()).intValue());
-                    this.updateView();
+
+                    this.updateView();}
+                    else if(model.getHuidigeSpeler().getSpelbord().getKlep(new Integer(node.getId()).intValue()).getToestand().equals("Toe")){
+                        model.getHuidigeSpeler().getSpelbord().getKlep(new Integer(node.getId()).intValue()).setToestand("Open");
+
+                        this.updateView();
+                    }
 
                 });
             }
@@ -217,55 +262,70 @@ public class SpelbordPresenter {
         view.getBtnGokwagen().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                String gok = view.getTxtGokwagen().getText().toLowerCase();
+                String gok = "\"" +view.getTxtGokwagen().getText().toLowerCase() +"\"";
+
             if(model.getHuidigeSpeler().equals(model.getSpeler1())) {
-                if (gok.equals(model.getSpeler2().getTeRadenPersoon().Naam.toLowerCase())){
+
+                if (gok.equals(model.getSpeler2().getTeRadenPersoon().Naam.toLowerCase())) {
+
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Proficiat, " + model.getSpeler1().getSpelersnaam() + ". U bent gewonnen");
                     alert.setHeaderText("U hebt " + model.getSpeler2().getSpelersnaam() + " verslagen in " + model.getSpeler1().getAantalBeurten() + " Beurten.");
                     alert.setContentText("Wilt u nog is spelen ?");
                     alert.setGraphic(model.getSpeler1().getTeRadenPersoon().getKarakter());
                     Optional<ButtonType> result = alert.showAndWait();
-                        if (result.isPresent()&& result.get() == ButtonType.OK){
-                            NieuwSpelView NieuwSpelView = new NieuwSpelView();
-                            NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model,NieuwSpelView);
-                            Scene Nieuwspel = new Scene(NieuwSpelView);
-                            Main.window.setScene(Nieuwspel);
-                            Main.window.setTitle("Nieuw Spel");
-                            Main.window.show();
-                         }
-                        else if(result.isPresent()&& result.get() == ButtonType.CANCEL){
-                            WelcomeView Welcomeview = new WelcomeView();
-                            WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
-                            Scene Homescreen = new Scene(Welcomeview);
-                            Main.window.setScene(Homescreen);
-                            Main.window.setTitle("Hoofdmenu");
-                            Main.window.show();
-                        }
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        NieuwSpelView NieuwSpelView = new NieuwSpelView();
+                        NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model, NieuwSpelView);
+                        Scene Nieuwspel = new Scene(NieuwSpelView);
+                        Main.window.setScene(Nieuwspel);
+                        Main.window.setTitle("Nieuw Spel");
+                        Main.window.show();
+                    } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                        WelcomeView Welcomeview = new WelcomeView();
+                        WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
+                        Scene Homescreen = new Scene(Welcomeview);
+                        Main.window.setScene(Homescreen);
+                        Main.window.setTitle("Hoofdmenu");
+                        Main.window.show();
+                    }
+                } else {
+                    view.getTxtGokwagen().setText("Fout");
+                    model.getSpeler1().setAantalBeurten(model.getSpeler1().getAantalBeurten()+1) ;
 
-            }}
-            else if (model.getHuidigeSpeler().equals(model.getSpeler2())){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Proficiat, " + model.getSpeler2().getSpelersnaam() + ". U bent gewonnen");
-                alert.setHeaderText("U hebt " + model.getSpeler1().getSpelersnaam() + " verslagen in " + model.getSpeler2().getAantalBeurten() + " Beurten.");
-                alert.setContentText("Wilt u nog is spelen ?");
-                alert.setGraphic(model.getSpeler1().getTeRadenPersoon().getKarakter());
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent()&& result.get() == ButtonType.OK){
-                    NieuwSpelView NieuwSpelView = new NieuwSpelView();
-                    NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model,NieuwSpelView);
-                    Scene Nieuwspel = new Scene(NieuwSpelView);
-                    Main.window.setScene(Nieuwspel);
-                    Main.window.setTitle("Nieuw Spel");
-                    Main.window.show();
+
                 }
-                else if(result.isPresent()&& result.get() == ButtonType.CANCEL){
-                    WelcomeView Welcomeview = new WelcomeView();
-                    WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
-                    Scene Homescreen = new Scene(Welcomeview);
-                    Main.window.setScene(Homescreen);
-                    Main.window.setTitle("Hoofdmenu");
-                    Main.window.show();
+
+            }
+            else if (model.getHuidigeSpeler().equals(model.getSpeler2())){
+                if (gok.equals(model.getSpeler1().getTeRadenPersoon().Naam.toLowerCase())) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Proficiat, " + model.getSpeler2().getSpelersnaam() + ". U bent gewonnen");
+                    alert.setHeaderText("U hebt " + model.getSpeler1().getSpelersnaam() + " verslagen in " + model.getSpeler2().getAantalBeurten() + " Beurten.");
+                    alert.setContentText("Wilt u nog is spelen ?");
+                    alert.setGraphic(model.getSpeler1().getTeRadenPersoon().getKarakter());
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        NieuwSpelView NieuwSpelView = new NieuwSpelView();
+                        NiewSpelPresenter NieuwspelPresenter = new NiewSpelPresenter(model, NieuwSpelView);
+                        Scene Nieuwspel = new Scene(NieuwSpelView);
+                        Main.window.setScene(Nieuwspel);
+                        Main.window.setTitle("Nieuw Spel");
+                        Main.window.show();
+                    } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                        WelcomeView Welcomeview = new WelcomeView();
+                        WelcomePresenter Welcomepresenter = new WelcomePresenter(model, Welcomeview);
+                        Scene Homescreen = new Scene(Welcomeview);
+                        Main.window.setScene(Homescreen);
+                        Main.window.setTitle("Hoofdmenu");
+                        Main.window.show();
+                    }
+                }
+                else {
+                    view.getTxtGokwagen().setText("Fout");
+                    model.getSpeler1().setAantalBeurten(model.getSpeler2().getAantalBeurten()+1) ;
+
+
                 }
             }}
         });

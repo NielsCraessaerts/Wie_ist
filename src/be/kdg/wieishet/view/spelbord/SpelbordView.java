@@ -163,10 +163,12 @@ public SpelbordView() {
         btnGokwagen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
         hboxGokwagen.getChildren().addAll(lblGokwagen,txtGokwagen,btnGokwagen);
         KeuzesAccordion.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px;");
-        KeuzesAccordion.setPrefWidth(300);
+        KeuzesAccordion.setPrefWidth(1080);
         SpelbordGrid.setHgap(15);
+        SpelbordGrid.setVgap(15);
         SpelbordGrid.setAlignment(Pos.CENTER);
         SpelbordGrid.setPrefWidth(800);
+        SpelbordGrid.setStyle("-fx-background-color:red");
         this.getChildren().add(HetisDeBeurtAan);
         this.getChildren().add(SpelbordGrid);
         this.getChildren().add(KeuzesAccordion);
@@ -184,9 +186,9 @@ public SpelbordView() {
         haarkleur.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
         gezichtsbeharing.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
         extra.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
-        this.setPrefSize(800,800);
-        HetisDeBeurtAan.setPrefWidth(950);
-        lblAntwoordVraag.setPrefWidth(950);
+        this.setPrefSize(1080,1080);
+        HetisDeBeurtAan.setPrefWidth(1080);
+        lblAntwoordVraag.setPrefWidth(1080);
 
         }
 // Layout van de Nodes
