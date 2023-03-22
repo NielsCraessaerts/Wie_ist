@@ -89,8 +89,35 @@ public class SpelbordPresenter {
                                 view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
                                 this.updateView();
 
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                updateView();
+
                             }
 
+                        }
+                        else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
                         }
 
                     }
@@ -102,7 +129,9 @@ public class SpelbordPresenter {
             if (node instanceof Button){
                 ((Button) node).setOnAction(event -> {
                     String question = view.getBtnExtra(new Integer(node.getId())).getText();
-                    if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                    if(view.getOpDeKnopGetikt()==0) {
+                        if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
 
                         if (model.getSpeler2().getTeRadenPersoon().isGelijkAan(question)){
@@ -110,20 +139,64 @@ public class SpelbordPresenter {
                         }else {
                             view.getLblAntwoordVraag().setText("Nee");
                         }
+                            view.setOpDeKnopGetikt(1);
+                    }
 
-
-
-
-
-                    } else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
+                     else if(model.getHuidigeSpeler().equals(model.getSpeler2())){
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
                         if (model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)){
                             view.getLblAntwoordVraag().setText("Ja");
                         }else {
                             view.getLblAntwoordVraag().setText("Nee");
                         }
+                            view.setOpDeKnopGetikt(1);
 
 
+                    }
+                    } else if(view.getOpDeKnopGetikt() == 1){
+                        if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+
+                        }
+                        else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+                        }
 
                     }
                 });
@@ -134,6 +207,7 @@ public class SpelbordPresenter {
             if (node instanceof Button){
                 ((Button) node).setOnAction(event -> {
                     String question = view.getBtnGezichtsbeharing(new Integer(node.getId())).getText();
+                    if (view.getOpDeKnopGetikt() == 0){
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
 
@@ -144,6 +218,7 @@ public class SpelbordPresenter {
                         }else {
                             view.getLblAntwoordVraag().setText("Nee");
                         }
+                        view.setOpDeKnopGetikt(1);
                     } else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
                         model.getSpeler1().getTeRadenPersoon().isGelijkAan(question);
                         if (model.getSpeler1().getTeRadenPersoon().isGelijkAan(question)){
@@ -152,7 +227,52 @@ public class SpelbordPresenter {
                             view.getLblAntwoordVraag().setText("Nee");
                         }
 
+                        view.setOpDeKnopGetikt(1);
 
+                    }}else if(view.getOpDeKnopGetikt() == 1){
+                        if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+
+                        }
+                        else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+                        }
 
                     }
                 });
@@ -162,9 +282,10 @@ public class SpelbordPresenter {
             if (node instanceof Button){
                 ((Button) node).setOnAction(event -> {
                     String question = view.getBtnHaar(new Integer(node.getId())).getText();
+                    if (view.getOpDeKnopGetikt() == 0){
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
-
+                        view.setOpDeKnopGetikt(1);
 
 
 
@@ -182,9 +303,54 @@ public class SpelbordPresenter {
                         }else {
                             view.getLblAntwoordVraag().setText("Nee");
                         }
+                        view.setOpDeKnopGetikt(1);
 
 
 
+                    }}else if(view.getOpDeKnopGetikt() == 1){
+                        if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+
+                        }
+                        else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            }else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+                        }
 
                     }
                 });
@@ -195,6 +361,7 @@ public class SpelbordPresenter {
             if (node instanceof Button){
                 ((Button) node).setOnAction(event -> {
                     String question = view.getBtnHaarkleur(new Integer(node.getId())).getText();
+                    if(view.getOpDeKnopGetikt() == 0){
                     if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
                         model.getSpeler2().getTeRadenPersoon().isGelijkAan(question);
 
@@ -203,7 +370,7 @@ public class SpelbordPresenter {
                         }else {
                             view.getLblAntwoordVraag().setText("Nee");
                         }
-
+                        view.setOpDeKnopGetikt(1);
 
 
 
@@ -216,8 +383,53 @@ public class SpelbordPresenter {
                         }else {
                             view.getLblAntwoordVraag().setText("Nee");
                         }
+                        view.setOpDeKnopGetikt(1);
 
 
+                    }}else if(view.getOpDeKnopGetikt() == 1){
+                        if (model.getHuidigeSpeler().equals(model.getSpeler1())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler2());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+
+                        }
+                        else if(model.getHuidigeSpeler().equals(model.getSpeler2())) {
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("U hebt uw beurt al gehad");
+                            alert.setHeaderText("U kunt maar 1 keer gokken of een vraag stellen");
+
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() && result.get() == ButtonType.OK) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                this.updateView();
+
+                            } else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+                                model.setHuidigeSpeler(model.getSpeler1());
+                                view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
+                                view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
+                                updateView();
+
+                            }
+                        }
 
                     }
                 });

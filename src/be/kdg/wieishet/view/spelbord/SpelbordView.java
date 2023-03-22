@@ -172,11 +172,13 @@ public SpelbordView() {
         SpelbordGrid.setHgap(15);
         SpelbordGrid.setVgap(15);
         SpelbordGrid.setAlignment(Pos.CENTER);
-        SpelbordGrid.setPrefWidth(800);
+        SpelbordGrid.setPrefWidth(1080);
         SpelbordGrid.setStyle("-fx-background-color:red");
+        btnSpelStoppen.setPrefHeight(45);
+        HetisDeBeurtAan.setPrefHeight(btnSpelStoppen.getPrefHeight());
 
         bovenkant.getChildren().addAll(HetisDeBeurtAan,btnSpelStoppen);
-        this.getChildren().add(HetisDeBeurtAan);
+        this.getChildren().add(bovenkant);
         this.getChildren().add(SpelbordGrid);
         this.getChildren().add(KeuzesAccordion);
         this.getChildren().add(lblAntwoordVraag);
@@ -196,7 +198,7 @@ public SpelbordView() {
         gezichtsbeharing.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
         extra.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
         this.setPrefSize(1080,1080);
-        HetisDeBeurtAan.setPrefWidth(1080);
+        HetisDeBeurtAan.setPrefWidth(900);
         lblAntwoordVraag.setPrefWidth(1080);
 
         }
