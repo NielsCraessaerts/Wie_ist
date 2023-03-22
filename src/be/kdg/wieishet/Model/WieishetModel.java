@@ -31,7 +31,7 @@ public class WieishetModel {
         musicEnabled = true;
         try{
         characters = new Persoon[24];
-        String Filepath = "C:\\1.KDG ACTIVITEITEN\\PROGRAMMEREN\\Ik begin dees muug te worde\\getfucked2\\.idea\\Inventory\\txtfiles\\KarakterAanmaak.txt";
+        String Filepath = ".idea\\Inventory\\txtfiles\\KarakterAanmaak.txt";
         BufferedReader ConfigReader = new BufferedReader(new FileReader(Filepath));
         String Line = ConfigReader.readLine();
          int counter = 0;
@@ -61,8 +61,8 @@ public class WieishetModel {
         return null;
     }
     public Persoon getCharacter(int id){
-            System.out.println("In getKarakter +" +id);
-            System.out.println(characters.length);
+
+
                 return characters[id];
 
 
@@ -153,11 +153,7 @@ public class WieishetModel {
                 Highscores mijnUitgelezenHighscore = new Highscores(spelernaam, score);
                 spelersinformatie.add(mijnUitgelezenHighscore);
 
-//                String foef = mijnHighscoreOnderdelen[0];
-//                String scoreStr = mijnHighscoreOnderdelen[1];
-//                System.out.println(foef + scoreStr);
-//                System.out.println(Highscores.getAbsolutePath());
-//                int foef2 = Integer.parseInt(scoreStr);
+//
             }
         } catch (IOException e) {
             e.printStackTrace();

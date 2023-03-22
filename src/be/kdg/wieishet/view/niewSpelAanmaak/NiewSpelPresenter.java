@@ -64,8 +64,8 @@ public class NiewSpelPresenter {
 
             model.getSpeler1().setSpelerskleur(Spelerskleur.Blauw);
             model.getSpeler2().setSpelerskleur(Spelerskleur.Rood);
-            model.getSpeler1().setAantalBeurten(0);
-            model.getSpeler2().setAantalBeurten(0);
+            model.getSpeler1().setAantalBeurten(1);
+            model.getSpeler2().setAantalBeurten(1);
             model.setHuidigeSpeler(model.getSpeler1());
 
 
@@ -96,11 +96,11 @@ public class NiewSpelPresenter {
 
 
         view.getCharacterGrid().getChildren().forEach(node -> {
-            System.out.println("view");
+
             if (node instanceof ToggleButton) {
-                System.out.println("start if");
+
                 ((ToggleButton) node).setOnAction(event -> {
-                    System.out.println("start getKarakter");
+
 
 
 

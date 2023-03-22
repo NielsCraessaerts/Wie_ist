@@ -41,13 +41,18 @@ private Label lblGokwagen;
 private TextField txtGokwagen;
 private HBox hboxGokwagen;
 private Button btnGokwagen;
+private Button btnSpelStoppen;
+private HBox bovenkant;
+private int opDeKnopGetikt;
 
 public SpelbordView() {
     this.initialiseNodes();
     this.layoutNodes();
 }
     private void initialiseNodes() {
+    bovenkant = new HBox();
     btnGokwagen = new Button("Bevestig");
+    btnSpelStoppen = new Button("Spel stoppen");
     hboxGokwagen = new HBox();
     lblGokwagen = new Label("Het geheime karakter is : ")  ;
     txtGokwagen = new TextField();
@@ -160,8 +165,8 @@ public SpelbordView() {
             characterButtons[index].setGraphic(image);
         }
     private void layoutNodes() {
-        btnGokwagen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
-        hboxGokwagen.getChildren().addAll(lblGokwagen,txtGokwagen,btnGokwagen);
+        btnGokwagen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;-fx-border-color: white; ");
+        hboxGokwagen.getChildren().addAll(lblGokwagen,txtGokwagen,btnGokwagen,Spelerwisselen);
         KeuzesAccordion.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2px;");
         KeuzesAccordion.setPrefWidth(1080);
         SpelbordGrid.setHgap(15);
@@ -169,18 +174,22 @@ public SpelbordView() {
         SpelbordGrid.setAlignment(Pos.CENTER);
         SpelbordGrid.setPrefWidth(800);
         SpelbordGrid.setStyle("-fx-background-color:red");
+
+        bovenkant.getChildren().addAll(HetisDeBeurtAan,btnSpelStoppen);
         this.getChildren().add(HetisDeBeurtAan);
         this.getChildren().add(SpelbordGrid);
         this.getChildren().add(KeuzesAccordion);
         this.getChildren().add(lblAntwoordVraag);
         this.getChildren().add(hboxGokwagen);
-        this.getChildren().add(Spelerwisselen);
+
+
         HetisDeBeurtAan.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
         lblGokwagen.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
         txtGokwagen.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-font-size:12pt");
         lblAntwoordVraag.setStyle("-fx-background-color:white;-fx-border-color:black;-fx-border-width: 2px; -fx-font-size: 12pt;");
-        Spelerwisselen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;");
+        Spelerwisselen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;-fx-border-color: white");
         geslacht.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
+        btnSpelStoppen.setStyle("-fx-background-color: #2a2a2a; -fx-text-fill: white; -fx-font-size: 20px;-fx-border-color: white");
 
         haar.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
         haarkleur.getContent().setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 2px; -fx-font-size: 12pt;");
@@ -362,5 +371,17 @@ public SpelbordView() {
 
     public Button getBtnGokwagen() {
         return btnGokwagen;
+    }
+
+    public Button getBtnSpelStoppen() {
+        return btnSpelStoppen;
+    }
+
+    public int getOpDeKnopGetikt() {
+        return opDeKnopGetikt;
+    }
+
+    public void setOpDeKnopGetikt(int opDeKnopGetikt) {
+        this.opDeKnopGetikt = opDeKnopGetikt;
     }
 }
