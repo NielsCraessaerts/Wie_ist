@@ -41,6 +41,7 @@ public class SpelbordPresenter {
 
 
         view.setPlayername(model.getHuidigeSpeler().getSpelersnaam());
+        //<editor-fold desc="ButtonContainers">
         view.getButtonContainerGeslacht().getChildren().forEach(node -> {
             if (node instanceof Button){
                 ((Button) node).setOnAction(event -> {
@@ -435,6 +436,7 @@ public class SpelbordPresenter {
                 });
             }
         });
+        //</editor-fold>
 
 
         view.getSpelbordGrid().getChildren().forEach(node -> {
@@ -499,24 +501,7 @@ public class SpelbordPresenter {
             view.getHetisDeBeurtAan().setText("Het is de beurt aan : " + model.getHuidigeSpeler().getSpelersnaam());
         });
 
-//        view.getBtnGokwagen().setOnAction(new EventHandler<ActionEvent>() {
-//            String gok = view.getTxtGokwagen().getText();
-//            if(model.getHuidigeSpeler().equals(model.getSpeler1())) {
-//                if (gok.equals(model.getSpeler2().getTeRadenPersoon().Naam)){
-//
-//                    public void handle(ActionEvent actionEvent) {
-//                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                        alert.setTitle("Spel stoppen");
-//                        alert.setHeaderText("Bent u zeker dat u het spel wilt beëindigen ?");
-//                        alert.setGraphic(view.getImageView());
-//                        Optional<ButtonType> result = alert.showAndWait();
-//                        if (result.isPresent()&& result.get() == ButtonType.OK){
-//                            System.exit(0);
-//                        }
-//
-//                    }
-//                }
-//            }});
+
 
         view.getBtnGokwagen().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -553,9 +538,7 @@ public class SpelbordPresenter {
                     view.getTxtGokwagen().setText("Fout");
                     model.getSpeler1().setAantalBeurten(model.getSpeler1().getAantalBeurten()+1) ;
 
-                    model.setHuidigeSpeler(model.getSpeler2());
-                    view.getSpelbordGrid().setStyle("-fx-background-color: blue;-fx-border-color: blue;-fx-border-width: 3px;");
-                    updateView();
+
 
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("fout geraden");
@@ -613,9 +596,7 @@ public class SpelbordPresenter {
                         view.getTxtGokwagen().setText("Fout");
                         model.getSpeler1().setAantalBeurten(model.getSpeler1().getAantalBeurten()+1) ;
 
-                        model.setHuidigeSpeler(model.getSpeler2());
-                        view.getSpelbordGrid().setStyle("-fx-background-color: red;-fx-border-color: red;-fx-border-width: 3px;");
-                        updateView();
+
 
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("fout geraden");
