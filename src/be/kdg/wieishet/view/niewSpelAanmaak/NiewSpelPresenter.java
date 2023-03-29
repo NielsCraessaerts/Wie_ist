@@ -42,7 +42,7 @@ public class NiewSpelPresenter {
         // Event handlers: roepen methodes aan uit het
         // model en zorgen voor een update van de view.
 
-        view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
+        view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() { //Terug naar het hoofdmenu
             @Override
             public void handle(ActionEvent actionEvent) {
                 WelcomeView Welcomeview = new WelcomeView();
@@ -53,12 +53,12 @@ public class NiewSpelPresenter {
                 Main.window.show();
             }
         });
-        view.getSetNaam().setOnAction(event -> {
+        view.getSetNaam().setOnAction(event -> {  //naam van speler vastleggen
                     model.getHuidigeSpeler().setSpelersnaam( view.getPlayerNameField().getText());
                     model.getHuidigeSpeler().setSpelbord(new Spelbord());
                 });
 
-        view.getStartButton().setOnAction(event -> {
+        view.getStartButton().setOnAction(event -> { //het spel starten
 
 
 
@@ -82,7 +82,7 @@ public class NiewSpelPresenter {
 
         });
 
-        view.getSwitchToPlayer2Button().setOnAction(event -> {
+        view.getSwitchToPlayer2Button().setOnAction(event -> { //van speler verwisselen
 
             view.getPlayerNameField().clear();
             if (model.getHuidigeSpeler().equals(model.getSpeler1())){
@@ -95,7 +95,7 @@ public class NiewSpelPresenter {
         });
 
 
-        view.getCharacterGrid().getChildren().forEach(node -> {
+        view.getCharacterGrid().getChildren().forEach(node -> { //inladen van grid om karater te kiezen
 
             if (node instanceof ToggleButton) {
 
